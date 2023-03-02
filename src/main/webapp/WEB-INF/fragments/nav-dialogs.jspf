@@ -9,9 +9,9 @@
             <dt>Release Date</dt>
             <dd>${initParam.releaseDate}</dd>        
             <dt>Content Contact</dt>
-            <dd>Steve Suhring (suhring)</dd>
+            <dd>Shawn Frierson (frierson)</dd>
             <dt>Technical Contact</dt>
-            <dd>Ryan Slominski (ryans), Tom Oren (tomoren)</dd>
+            <dd>Ryan Slominski (ryans)</dd>
         </dl>
         <div class="dialog-button-panel">
             <button id="helpCloser" class="styled-button">Close</button>
