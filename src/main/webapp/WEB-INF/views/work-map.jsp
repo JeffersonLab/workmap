@@ -8,10 +8,10 @@
 <c:url context="${pageContext.request.contextPath eq '' ? '/' : pageContext.request.contextPath}" value="/${previousURL}" var="domainRelativePrevURL"/>
 <c:url context="${pageContext.request.contextPath eq '' ? '/' : pageContext.request.contextPath}" value="/${nextURL}" var="domainRelativeNextURL"/>
 <c:url context="${pageContext.request.contextPath eq '' ? '/' : pageContext.request.contextPath}" value="/edit-work-map?yearMonthDay=${yearMonthDayConciseStr}" var="domainRelativeEditURL"/>
-<c:url value="${absContextURL}?yearMonthDay=${yearMonthDayConciseStr}" var="absViewURL"/>
-<c:url value="${pageContext.request.contextPath}/convert" var="pdfURL">
+<c:url value="/?yearMonthDay=${yearMonthDayConciseStr}" var="viewURL"/>
+<c:url value="convert" var="pdfURL">
     <c:param name="type" value="pdf"/>
-    <c:param name="url" value="${absViewURL}"/>
+    <c:param name="url" value="${viewURL}"/>
     <c:param name="filename" value="workmap.pdf"/>
 </c:url>
 <c:set var="resourceLocation" value="${env['RESOURCE_LOCATION']}"/>
