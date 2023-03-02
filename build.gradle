@@ -1,6 +1,20 @@
 plugins {
     id 'war'  
 }
+description = "Accelerator work map"
+group 'org.jlab'
+version = '3.6.0'
+
+ext {
+    releaseDate = 'Mar 2 2023'
+    resourceVersion = '25'
+}
+
+tasks.withType(JavaCompile) {
+    options.release = 11
+    options.encoding = 'UTF-8'
+    options.compilerArgs += ["-Xlint:deprecation", "-Xlint:unchecked"]
+}
 repositories {
     mavenCentral()
 }
@@ -9,4 +23,18 @@ dependencies {
             'javax.servlet:jstl:1.2',
             'org.tuckey:urlrewritefilter:4.0.4',
             'org.hibernate:hibernate-core:5.4.2.Final'
+}
+war {
+    archiveFileName='workmap.war'
+    filesMatching('WEB-INF/web.xml') {
+        filter {
+            String line -> line.replaceAll("@VERSION@", project.version)
+        }
+        filter {
+            String line -> line.replaceAll("@RESOURCE_VERSION@", resourceVersion)
+        }
+        filter {
+            String line -> line.replaceAll("@RELEASE_DATE@", releaseDate)
+        }
+    }
 }
