@@ -15,7 +15,7 @@
         </dl>
         <div class="dialog-button-panel">
             <button id="helpCloser" class="styled-button">Close</button>
-            <a id="userguidelink" class="styled-button" href="${fn:escapeXml(initParam.userguideURL)}">User Guide</a>
+            <a id="userguidelink" class="styled-button" href="${fn:escapeXml(initParam.homeURL)}">Workmap Home</a>
         </div>
     </div>                        
 </div>

@@ -10,12 +10,12 @@
         <param-value>@RELEASE_DATE@</param-value>
     </context-param>
     <context-param>
-        <param-name>userguideURL</param-name>
-        <param-value>https://devweb.acc.jlab.org/twiki/bin/view/SWDocs/WorkMap</param-value>
+        <param-name>homeURL</param-name>
+        <param-value>https://github.com/JeffersonLab/workmap</param-value>
     </context-param>
     <context-param>
         <param-name>atlisURL</param-name>
-        <param-value>http://devweb.acc.jlab.org/CSUEApps/atlis/atlis.php</param-value>
+        <param-value>https://tasklists.jlab.org</param-value>
     </context-param>
     <filter>
         <filter-name>UrlRewriteFilter</filter-name>
