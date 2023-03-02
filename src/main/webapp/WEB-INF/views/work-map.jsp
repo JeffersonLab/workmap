@@ -1,0 +1,306 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<f:formatDate value="${yearMonthDay}" pattern="EE MMMM d yyyy" var="yearMonthDayVerboseStr"/>
+<f:formatDate value="${yearMonthDay}" pattern="yyyy-MM-dd" var="yearMonthDayConciseStr"/>
+<f:formatDate value="${lastModified}" pattern="yyyy-MM-dd HH:mm" var="lastModifiedStr"/>
+<c:url context="${pageContext.request.contextPath eq '' ? '/' : pageContext.request.contextPath}" value="/${previousURL}" var="domainRelativePrevURL"/>
+<c:url context="${pageContext.request.contextPath eq '' ? '/' : pageContext.request.contextPath}" value="/${nextURL}" var="domainRelativeNextURL"/>
+<c:url context="${pageContext.request.contextPath eq '' ? '/' : pageContext.request.contextPath}" value="/edit-work-map?yearMonthDay=${yearMonthDayConciseStr}" var="domainRelativeEditURL"/>
+<c:url value="${absContextURL}?yearMonthDay=${yearMonthDayConciseStr}" var="absViewURL"/>
+<c:url value="https://accweb.acc.jlab.org/puppet-show/pdf" var="pdfURL">
+    <c:param name="url" value="${absViewURL}"/>
+    <c:param name="filename" value="workmap.pdf"/>
+    <c:param name="format" value="Letter"/>
+    <c:param name="landscape" value="true"/>
+    <c:param name="printBackground" value="true"/>
+    <c:param name="waitUntil" value="networkidle2"/>
+</c:url>
+<!DOCTYPE html>
+<html class="${initParam.notification ne null ? 'special-notification' : ''}">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>ATLis Work Map - <c:out value="${yearMonthDayVerboseStr}"/></title>
+        <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/v${initParam.resourceVersionNumber}/img/favicon.ico"/>
+        <link type="text/css" rel="stylesheet" href="${cdnContextPath}/jquery-ui/1.10.3/theme/atlis/jquery-ui.min.css"/>
+        <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/v${initParam.resourceVersionNumber}/css/workmap.css"/>
+        <style>
+            .ui-state-hover > .ui-button-text > .ui-icon {
+                background-image: url("${cdnContextPath}/jquery-ui/1.10.3/theme/atlis/images/ui-icons_ffff00_256x240.png") !important;
+            }
+        </style>
+    </head>
+    <body${editable ? ' class="editable"' : ''}>
+        <c:if test="${initParam.notification ne null}">
+            <div id="notification-bar"><c:out value="${initParam.notification}"/></div>
+        </c:if>            
+        <div id="header">
+            <div id="left-header">
+                <%@include file="../fragments/logo.jspf"%>
+                <%@include file="../fragments/auth.jspf"%>
+            </div>
+            <div id="center-header">
+                <h2><button class="styled-button time-scroll-button" title="Previous Day" onclick="window.location.href = '${fn:escapeXml(domainRelativePrevURL)}'"><span class="ui-icon ui-icon-seek-prev"></span></button> <a id="pageLink" href="${fn:escapeXml(absViewURL)}"><c:out value="${yearMonthDayVerboseStr}"/></a> <button class="styled-button time-scroll-button" title="Next Day" onclick="window.location.href = '${fn:escapeXml(domainRelativeNextURL)}'"><span class="ui-icon ui-icon-seek-next"></span></button></h2>
+                        <%@include file="../fragments/nav.jspf"%>
+            </div>
+            <div id="right-header">
+                <div id="key">
+                    <span class="legend">Key <a href="#" id="key1link" class="selected-key">1</a> <a href="#" id="key2link">2</a></span>
+                    <table id="key1">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span class="area">
+                                        <span class="symbol keepout"></span>
+                                        <span class="text">Keep Out</span>
+                                    </span>                                    
+                                </td>
+                                <td>
+                                    <span class="area">
+                                        <span class="symbol penetration"></span>
+                                        <span class="text">Penetration</span>
+                                    </span>                                    
+                                </td>
+                                <td>
+                                    <span class="area">
+                                        <span class="symbol radiation"></span>
+                                        <span class="text">Radiation</span>
+                                    </span>                                    
+                                </td>
+                                <td>
+                                    <span class="area">
+                                        <span class="symbol special"></span>
+                                        <span class="text">ODH</span>
+                                    </span> 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="area">
+                                        <span class="symbol electrical"></span>
+                                        <span class="text">Electrical</span>
+                                    </span>                                    
+                                </td>
+                                <td>
+                                    <span class="area">
+                                        <span class="symbol alignment"></span>
+                                        <span class="text">Alignment</span>
+                                    </span>                                    
+                                </td>
+                                <td>
+                                    <span class="area">
+                                        <span class="symbol vacuum"></span>
+                                        <span class="text">Vacuum</span>
+                                    </span>                                    
+                                </td>
+                                <td>
+                                    <span class="area">
+                                        <span class="symbol general"></span>
+                                        <span class="text">General</span>
+                                    </span> 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="area">
+                                        <span class="symbol material"></span>
+                                        <span class="text">Material Handling</span>
+                                    </span>  
+                                </td>
+                                <td>
+                                    <span class="area">
+                                        <span class="symbol outage"></span>
+                                        <span class="text">Outage</span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="area">
+                                        <span class="symbol covid"></span>
+                                        <span class="text">COVID <6'</span>
+                                    </span>
+                                </td>
+                                <td id="upstairs-work-td">
+                                    <span class="area area-is-upstairs">
+                                        <span class="text-background">Upstairs Work</span>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table id="key2" style="display: none;">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span class="pss-area inj-pss">
+                                        <span class="line power-permit"></span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="">Power Permit</span>
+                                </td>
+                                <td>
+                                  <span class="pss-area inj-pss">
+                                     <span class="line beam-permit"></span>
+                                  </span>
+                                </td>
+                                <td>
+                                    <span class="">Beam Permit</span>
+                                </td>
+                                 <td>
+                                    <span class="pss-area inj-pss">
+                                        <span class="line controlled-access"></span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="">Controlled Access</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                 <span class="pss-area inj-pss">
+                                     <span class="line lock-power-permit"></span>
+                                 </span>
+                                </td>
+                                <td>
+                                    <span class="">Partial Day Power Permit</span>
+                                </td>
+                                <td>
+                                 <span class="pss-area inj-pss">
+                                     <span class="line lock-beam-permit"></span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="">Partial Day Beam Permit</span>
+                                </td>
+                                <td>
+                                    <span class="pss-area inj-pss">
+                                        <span class="line lock-controlled-access"></span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="">Partial Day Controlled Access</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="content">
+            <form method="post" action="${pageContext.request.contextPath}/edit-work-map">
+                <c:if test="${pageContext.request.isUserInRole('oability') or pageContext.request.isUserInRole('pd')}">
+                    <div id="topActionPanel">
+                        <c:choose>
+                            <c:when test="${editable}">                              
+                                <input type="submit" class="styled-button save-button" value="Save"/>
+                            </c:when>
+                            <c:otherwise>
+                                <a class="styled-button edit-mode-button" href="${fn:escapeXml(domainRelativeEditURL)}">Edit Mode</a>
+                                <hr/>                                   
+                                <a id="copyOpener" class="styled-button" title="Select a work map to copy">Copy...</a>                         
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
+                </c:if>               
+                <div id="map-border">
+                    <div id="workmap-container">
+                        <c:forEach var="area" items="${taskAreas}">
+                            <c:if test="${editable or not empty taskMap[area.areaName]}">
+                                <span class="area ${area.areaName} ${taskMap[area.areaName].upstairs ? 'area-is-upstairs' : 'area-is-downstairs'}" data-area-name="${area.areaName}">
+                                    <c:choose>
+                                        <c:when test="${editable}">
+                                            <c:choose>
+                                                <c:when test="${taskMap[area.areaName].workMapTaskTypeId ne null}">
+                                                    <span class="edit-task-attribute-button symbol ${taskMap[area.areaName].workMapTaskTypeId.cssClassName}"></span>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <span class="edit-task-attribute-button no-symbol"></span>
+                                                </c:otherwise>
+                                            </c:choose>
+                                            <input type="hidden" class="area-symbol" name="${area.areaName}-symbol" value="${taskMap[area.areaName].workMapTaskTypeId.typeName}"/>
+                                            <input type="hidden" class="area-upstairs" name="${area.areaName}-upstairs" value="${taskMap[area.areaName].upstairs ? 'Y' : 'N'}"/>
+                                            <c:if test="${not area.iconOnly}">
+                                                <span class="text"><input name="${area.areaName}-text" type="text" class="text-input" size="16" maxlength="32" value="${fn:escapeXml(taskMap[area.areaName].message)}"/></span>
+                                            </c:if>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <c:if test="${taskMap[area.areaName].workMapTaskTypeId ne null}">
+                                                <span class="symbol ${taskMap[area.areaName].workMapTaskTypeId.cssClassName}"></span>
+                                            </c:if>
+                                            <c:if test="${not area.iconOnly}">
+                                                <span class="text"><span class="text-background"><c:out value="${taskMap[area.areaName].message}"/></span></span>
+                                            </c:if>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </span>
+                            </c:if>
+                        </c:forEach>
+                        <c:forEach var="area" items="${pssAreas}">
+                            <c:choose>
+                                <c:when test="${editable}">
+                                    <span class="editable-pss-area editable-${area.areaName}">
+                                        <span>
+                                            <select name="${area.areaName}-line" class="line-select">
+                                                <option value="" class=""> </option>
+                                                <c:forEach var="state" items="${pssStates}">
+                                                    <option value="${fn:escapeXml(state.stateName)}" ${pssMap[area.areaName].workMapPssStateId.stateName eq state.stateName ? 'selected="selected"' : ''}><c:out value="${state.stateName}"/></option>
+                                                </c:forEach>
+                                            </select>
+                                        </span>
+                                    </span>
+                                </c:when>
+                                <c:otherwise>
+                                    <c:if test="${not empty pssMap[area.areaName]}">
+                                        <span class="pss-area ${area.areaName}">
+                                            <span class="line ${pssMap[area.areaName].workMapPssStateId.cssClassName}"></span>
+                                        </span>
+                                    </c:if>
+                                </c:otherwise>
+                            </c:choose>                            
+                        </c:forEach>
+                        <img alt="Accelerator" width="1200" height="614" src="${pageContext.request.contextPath}/resources/v${initParam.resourceVersionNumber}/img/accelerator.png"/>
+                        <span id="note">
+                            <c:choose>
+                                <c:when test="${editable}">
+                                    <textarea id="note" name="note" maxlength="256"><c:out value="${note}"/></textarea>
+                                </c:when>
+                                <c:otherwise>
+                                    <span id="note-view"><c:out value="${note}"/></span>
+                                </c:otherwise>
+                            </c:choose>   
+                        </span>
+                    </div>
+                </div>
+                <div id="content-footer">
+                    <span id="modified-date">Last Modified: <c:out value="${lastModifiedStr}"/></span>
+                    <c:if test="${!publicProxy}">
+                        <a id="pdf-button" class="styled-button" href="${fn:escapeXml(pdfURL)}">PDF</a>
+                    </c:if>
+                </div>
+                <input type="hidden" name="yearMonthDay" value="${yearMonthDayConciseStr}"/>    
+            </form>
+        </div>
+        <script type="text/javascript" src="${cdnContextPath}/jquery/1.10.2.min.js"></script>
+        <script type="text/javascript" src="${cdnContextPath}/jquery-ui/1.10.3/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/v${initParam.resourceVersionNumber}/js/workmap.js"></script>
+        <script type="text/javascript">
+            var jlab = jlab || {};
+            jlab.keycloakHostname = '${env["KEYCLOAK_HOSTNAME"]}';
+            jlab.clientId = '${env["KEYCLOAK_CLIENT_ID_WORKMAP"]}';
+            <c:url var="url" value="https://${env['KEYCLOAK_HOSTNAME']}/auth/realms/jlab/protocol/openid-connect/auth">
+            <c:param name="client_id" value="account"/>
+            <c:param name="kc_idp_hint" value="cue-keycloak-oidc"/>
+            <c:param name="response_type" value="code"/>
+            <c:param name="redirect_uri" value="https://${env['KEYCLOAK_HOSTNAME']}/auth/realms/jlab/account/"/>
+            </c:url>
+            jlab.loginUrl = '${url}';
+            <c:url var="url" value="https://${env['KEYCLOAK_HOSTNAME']}/auth/realms/jlab/protocol/openid-connect/logout">
+            <c:param name="redirect_uri" value="https://${env['KEYCLOAK_HOSTNAME']}/auth/realms/jlab/account/"/>
+            </c:url>
+            jlab.logoutUrl = '${url}';
+        </script>
+        <%@include file="../fragments/nav-dialogs.jspf"%>
+        <%@include file="../fragments/map-dialogs.jspf"%>
+    </body>    
+</html>

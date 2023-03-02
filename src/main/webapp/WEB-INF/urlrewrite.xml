@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE urlrewrite
+    PUBLIC "-//tuckey.org//DTD UrlRewrite 4.0//EN"
+    "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
+
+<urlrewrite>
+
+    <!-- -->
+    <!-- View Work Map Rules -->
+    <!-- -->
+    
+    <!-- Welcome page is view-work-map -->
+    <rule>
+        <from>^/([-0-9]+)$</from>
+        <to>/view-work-map?yearMonthDay=$1</to>
+    </rule>
+
+    <!-- Rewrite yearMonthDay URL query parameter -->
+    <rule>
+        <from>^/view-work-map/([-0-9]+)$</from>
+        <to>/view-work-map?yearMonthDay=$1</to>
+    </rule>
+
+     <!-- Anchor links can be rewritten -->
+    <outbound-rule>
+        <from>/view-work-map\?yearMonthDay=([-0-9]*)$</from>
+        <to>/$1</to>    
+    </outbound-rule>    
+
+     <!-- Current work map can be rewritten -->
+    <outbound-rule>
+        <from>/view-work-map$</from>
+        <to>/</to>    
+    </outbound-rule>
+
+    <!-- -->
+    <!-- Edit Work Map Rules -->
+    <!-- -->
+
+    <!-- Rewrite yearMonthDay URL query parameter -->
+    <rule>
+        <from>^/edit-work-map/([-0-9]+)$</from>
+        <to>/edit-work-map?yearMonthDay=$1</to>
+    </rule>
+
+     <!-- Anchor links can be rewritten -->
+    <outbound-rule>
+        <from>/edit-work-map\?yearMonthDay=([-0-9]*)$</from>
+        <to>/edit-work-map/$1</to>    
+    </outbound-rule>       
+
+    <!-- -->
+    <!-- Logout Rules -->
+    <!-- -->
+
+    <!-- Rewrite yearMonthDay URL query parameter -->
+    <rule>
+        <from>^/logout/([-0-9]+)$</from>
+        <to>/logout?yearMonthDay=$1</to>
+    </rule>
+
+     <!-- Anchor links can be rewritten -->
+    <outbound-rule>
+        <from>/logout\?yearMonthDay=([-0-9]*)$</from>
+        <to>/logout/$1</to>    
+    </outbound-rule>     
+
+    <!-- Resource Versioning -->
+    
+    <!-- Rewrite resource link to strip off directory version -->
+    <rule>
+        <from>^/resources/v([0-9]+)/(.*)$</from>
+        <to>/resources/$2</to>
+    </rule>
+
+</urlrewrite>

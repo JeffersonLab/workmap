@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <display-name>Work Map</display-name>
+    <context-param>
+        <description>Date of release</description>
+        <param-name>releaseDate</param-name>
+        <param-value>23 Sep 2020</param-value>
+    </context-param>
+    <context-param>
+        <description>User-friendly release versioning number</description>
+        <param-name>releaseNumber</param-name>
+        <param-value>3.5.0</param-value>
+    </context-param>
+    <context-param>
+        <description>Resource revision number used to bust caches</description>
+        <param-name>resourceVersionNumber</param-name>
+        <param-value>24</param-value>
+    </context-param>
+    <context-param>
+        <param-name>userguideURL</param-name>
+        <param-value>https://devweb.acc.jlab.org/twiki/bin/view/SWDocs/WorkMap</param-value>
+    </context-param>
+    <context-param>
+        <param-name>atlisURL</param-name>
+        <param-value>http://devweb.acc.jlab.org/CSUEApps/atlis/atlis.php</param-value>
+    </context-param>
+    <filter>
+        <filter-name>UrlRewriteFilter</filter-name>
+        <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>UrlRewriteFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <session-config>
+        <session-timeout>480</session-timeout>
+        <cookie-config>
+            <http-only>true</http-only>
+            <secure>true</secure>
+        </cookie-config>
+        <tracking-mode>COOKIE</tracking-mode>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>view-work-map</welcome-file>
+    </welcome-file-list>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error</location>
+    </error-page>
+    <error-page>
+        <exception-type>java.lang.Throwable</exception-type>
+        <location>/error</location>
+    </error-page>
+    <security-constraint>
+        <display-name>Enforce Authenticated on SSO Redirect Page</display-name>
+        <web-resource-collection>
+            <web-resource-name>SSO Page</web-resource-name>
+            <url-pattern>/sso</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>ipausers</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    <security-constraint>
+        <display-name>Enforce Authenticated Work Map Manager over SSL on edit</display-name>
+        <web-resource-collection>
+            <web-resource-name>Secure Resources</web-resource-name>
+            <description/>
+            <url-pattern>/edit-work-map</url-pattern>
+            <url-pattern>/edit-work-map/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>oability</role-name>
+            <role-name>pd</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <description/>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    <login-config>
+        <auth-method>KEYCLOAK</auth-method>
+        <realm-name>jlab</realm-name>
+    </login-config>
+    <security-role>
+        <description>Super user who is authorized to make changes to the Work Map</description>
+        <role-name>oability</role-name>
+    </security-role>
+    <security-role>
+        <role-name>pd</role-name>
+    </security-role>
+    <security-role>
+        <role-name>ipausers</role-name>
+    </security-role>
+    <distributable/>
+</web-app>
