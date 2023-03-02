@@ -31,9 +31,6 @@ war {
             String line -> line.replaceAll("@VERSION@", project.version)
         }
         filter {
-            String line -> line.replaceAll("@RESOURCE_VERSION@", resourceVersion)
-        }
-        filter {
             String line -> line.replaceAll("@RELEASE_DATE@", releaseDate)
         }
     }

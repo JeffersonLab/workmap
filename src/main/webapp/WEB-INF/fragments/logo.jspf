@@ -1,1 +1,1 @@
-<h1><a href="/workmap"><img alt="ATLis Work Map" src="${pageContext.request.contextPath}/resources/v${initParam.resourceVersionNumber}/img/logo.png" width="430" height="56"/></a></h1>
+<h1><a href="/workmap"><img alt="ATLis Work Map" src="${pageContext.request.contextPath}/resources/v${initParam.releaseNumber}/img/logo.png" width="430" height="56"/></a></h1>

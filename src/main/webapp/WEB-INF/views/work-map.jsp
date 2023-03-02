@@ -22,9 +22,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>ATLis Work Map - <c:out value="${yearMonthDayVerboseStr}"/></title>
-        <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/v${initParam.resourceVersionNumber}/img/favicon.ico"/>
+        <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/v${initParam.releaseNumber}/img/favicon.ico"/>
         <link type="text/css" rel="stylesheet" href="${cdnContextPath}/jquery-ui/1.10.3/theme/atlis/jquery-ui.min.css"/>
-        <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/v${initParam.resourceVersionNumber}/css/workmap.css"/>
+        <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/v${initParam.releaseNumber}/css/workmap.css"/>
         <style>
             .ui-state-hover > .ui-button-text > .ui-icon {
                 background-image: url("${cdnContextPath}/jquery-ui/1.10.3/theme/atlis/images/ui-icons_ffff00_256x240.png") !important;
@@ -259,7 +259,7 @@
                                 </c:otherwise>
                             </c:choose>                            
                         </c:forEach>
-                        <img alt="Accelerator" width="1200" height="614" src="${pageContext.request.contextPath}/resources/v${initParam.resourceVersionNumber}/img/accelerator.png"/>
+                        <img alt="Accelerator" width="1200" height="614" src="${pageContext.request.contextPath}/resources/v${initParam.releaseNumber}/img/accelerator.png"/>
                         <span id="note">
                             <c:choose>
                                 <c:when test="${editable}">
@@ -283,7 +283,7 @@
         </div>
         <script type="text/javascript" src="${cdnContextPath}/jquery/1.10.2.min.js"></script>
         <script type="text/javascript" src="${cdnContextPath}/jquery-ui/1.10.3/jquery-ui.min.js"></script>
-        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/v${initParam.resourceVersionNumber}/js/workmap.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/v${initParam.releaseNumber}/js/workmap.js"></script>
         <script type="text/javascript">
             var jlab = jlab || {};
             jlab.keycloakHostname = '${env["KEYCLOAK_HOSTNAME"]}';
