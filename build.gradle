@@ -3,7 +3,7 @@ plugins {
 }
 description = "Accelerator work map"
 group 'org.jlab'
-version = '3.7.0'
+version = '3.7.1'
 
 ext {
     releaseDate = 'Mar 2 2023'
