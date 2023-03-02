@@ -93,11 +93,7 @@ public class WorkmapUtil {
             String text = request.getParameter(area.getAreaName() + "-text");
             String upstairs = request.getParameter(area.getAreaName() + "-upstairs");
 
-            boolean upstairsBoolean = false;
-
-            if ("Y".equals(upstairs)) {
-                upstairsBoolean = true;
-            }
+            boolean upstairsBoolean = "Y".equals(upstairs);
 
             //System.out.println("symbol: " + symbol);
             //System.out.println("text: " + text);

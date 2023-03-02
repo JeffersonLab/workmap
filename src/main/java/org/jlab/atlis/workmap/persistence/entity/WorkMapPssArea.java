@@ -95,14 +95,10 @@ public class WorkMapPssArea implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof WorkMapPssArea)) {
+        if (!(object instanceof WorkMapPssArea other)) {
             return false;
         }
-        WorkMapPssArea other = (WorkMapPssArea) object;
-        if ((this.workMapPssAreaId == null && other.workMapPssAreaId != null) || (this.workMapPssAreaId != null && !this.workMapPssAreaId.equals(other.workMapPssAreaId))) {
-            return false;
-        }
-        return true;
+        return (this.workMapPssAreaId != null || other.workMapPssAreaId == null) && (this.workMapPssAreaId == null || this.workMapPssAreaId.equals(other.workMapPssAreaId));
     }
 
     @Override

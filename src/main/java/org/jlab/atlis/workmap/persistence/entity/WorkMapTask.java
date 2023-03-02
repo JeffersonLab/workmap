@@ -73,7 +73,7 @@ public class WorkMapTask implements Serializable {
     }
     
     public void setUpstairs(boolean upstairs) {
-        this.upstairsYn = upstairs == true ? "Y" : "N";
+        this.upstairsYn = upstairs ? "Y" : "N";
     }    
     
     public BigDecimal getWorkMapTaskId() {
@@ -102,14 +102,10 @@ public class WorkMapTask implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof WorkMapTask)) {
+        if (!(object instanceof WorkMapTask other)) {
             return false;
         }
-        WorkMapTask other = (WorkMapTask) object;
-        if ((this.workMapTaskId == null && other.workMapTaskId != null) || (this.workMapTaskId != null && !this.workMapTaskId.equals(other.workMapTaskId))) {
-            return false;
-        }
-        return true;
+        return (this.workMapTaskId != null || other.workMapTaskId == null) && (this.workMapTaskId == null || this.workMapTaskId.equals(other.workMapTaskId));
     }
 
     public WorkMapTaskType getWorkMapTaskTypeId() {
