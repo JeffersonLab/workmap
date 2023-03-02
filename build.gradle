@@ -7,7 +7,6 @@ version = '3.6.0'
 
 ext {
     releaseDate = 'Mar 2 2023'
-    resourceVersion = '25'
 }
 
 tasks.withType(JavaCompile) {
