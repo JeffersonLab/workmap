@@ -112,9 +112,10 @@ public class WorkMapPssState implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof WorkMapPssState other)) {
+        if (!(object instanceof WorkMapPssState)) {
             return false;
         }
+        WorkMapPssState other = (WorkMapPssState)object;
         return (this.workMapPssStateId != null || other.workMapPssStateId == null) && (this.workMapPssStateId == null || this.workMapPssStateId.equals(other.workMapPssStateId));
     }
 

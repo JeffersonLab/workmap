@@ -121,9 +121,10 @@ public class WorkMapTaskType implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof WorkMapTaskType other)) {
+        if (!(object instanceof WorkMapTaskType)) {
             return false;
         }
+        WorkMapTaskType other = (WorkMapTaskType)object;
         return (this.workMapTaskTypeId != null || other.workMapTaskTypeId == null) && (this.workMapTaskTypeId == null || this.workMapTaskTypeId.equals(other.workMapTaskTypeId));
     }
 

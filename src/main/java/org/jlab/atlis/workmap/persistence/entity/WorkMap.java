@@ -136,9 +136,10 @@ public class WorkMap implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof WorkMap other)) {
+        if (!(object instanceof WorkMap)) {
             return false;
         }
+        WorkMap other = (WorkMap)object;
         return (this.workMapId != null || other.workMapId == null) && (this.workMapId == null || this.workMapId.equals(other.workMapId));
     }
 
