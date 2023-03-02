@@ -17,13 +17,21 @@
     <c:param name="printBackground" value="true"/>
     <c:param name="waitUntil" value="networkidle2"/>
 </c:url>
+<c:set var="resourceLocation" value="${env['RESOURCE_LOCATION']}"/>
 <!DOCTYPE html>
 <html class="${initParam.notification ne null ? 'special-notification' : ''}">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>ATLis Work Map - <c:out value="${yearMonthDayVerboseStr}"/></title>
         <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/v${initParam.releaseNumber}/img/favicon.ico"/>
-        <link type="text/css" rel="stylesheet" href="${cdnContextPath}/jquery-ui/1.10.3/theme/atlis/jquery-ui.min.css"/>
+        <c:choose>
+            <c:when test="${'CDN' eq resourceLocation}">
+                <link type="text/css" rel="stylesheet" href="${cdnContextPath}/jquery-ui/1.13.2/theme/atlis/jquery-ui.min.css"/>
+            </c:when>
+            <c:otherwise><!-- LOCAL -->
+                <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/jquery-ui/1.13.2/theme/atlis/jquery-ui.min.css"/>
+            </c:otherwise>
+        </c:choose>
         <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/resources/v${initParam.releaseNumber}/css/workmap.css"/>
         <style>
             .ui-state-hover > .ui-button-text > .ui-icon {
@@ -281,8 +289,16 @@
                 <input type="hidden" name="yearMonthDay" value="${yearMonthDayConciseStr}"/>    
             </form>
         </div>
-        <script type="text/javascript" src="${cdnContextPath}/jquery/1.10.2.min.js"></script>
-        <script type="text/javascript" src="${cdnContextPath}/jquery-ui/1.10.3/jquery-ui.min.js"></script>
+        <c:choose>
+            <c:when test="${'CDN' eq resourceLocation}">
+                <script type="text/javascript" src="${cdnContextPath}/jquery/3.6.1.min.js"></script>
+                <script type="text/javascript" src="${cdnContextPath}/jquery-ui/1.13.2/jquery-ui.min.js"></script>
+            </c:when>
+            <c:otherwise><!-- LOCAL -->
+                <script type="text/javascript" src="${pageContext.request.contextPath}/resources/jquery/3.6.1.min.js"></script>
+                <script type="text/javascript" src="${pageContext.request.contextPath}/resources/jquery-ui/1.13.2/jquery-ui.min.js"></script>
+            </c:otherwise>
+        </c:choose>
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/v${initParam.releaseNumber}/js/workmap.js"></script>
         <script type="text/javascript">
             var jlab = jlab || {};
