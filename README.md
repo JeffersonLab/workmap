@@ -1,4 +1,4 @@
-# workmap
+# workmap [![CI](https://github.com/JeffersonLab/workmap/actions/workflows/ci.yml/badge.svg)](https://github.com/JeffersonLab/workmap/actions/workflows/ci.yml) [![Docker](https://img.shields.io/docker/v/jeffersonlab/workmap?sort=semver&label=DockerHub)](https://hub.docker.com/r/jeffersonlab/workmap)
 Accelerator task list work map
 
 ---
