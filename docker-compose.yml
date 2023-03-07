@@ -29,4 +29,5 @@ services:
       ORACLE_SERVICE: 'xepdb1'
       PUPPET_SHOW_SERVER_URL: 'http://puppet:3000'
       INTERNAL_SERVER_URL: 'http://workmap:8080'
+      CALENDAR_URL: 'https://ace.jlab.org'
       TZ: 'America/New_York'
