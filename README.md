@@ -22,7 +22,9 @@ docker compose up
 http://localhost:8080/workmap
 ```
 
-See: [Docker Compose Strategy](https://gist.github.com/slominskir/a7da801e8259f5974c978f9c3091d52c)
+**Note**: Login with demo username "tbrown" and password "password".
+
+**See**: [Docker Compose Strategy](https://gist.github.com/slominskir/a7da801e8259f5974c978f9c3091d52c)
 
 ## Build
 This project is built with [Java 17](https://adoptium.net/) (compiled to Java 11 bytecode), and uses the [Gradle 7](https://gradle.org/) build tool to automatically download dependencies and build the project from source:
