@@ -21,7 +21,7 @@ import org.jlab.atlis.workmap.persistence.entity.WorkMapTask;
  * @author ryans
  */
 @Stateless
-@DeclareRoles({"oability", "pd"})
+@DeclareRoles("workmap-admin")
 public class WorkMapTaskFacade extends AbstractFacade<WorkMapTask> {
 
     @PersistenceContext(unitName = "workmapPU")

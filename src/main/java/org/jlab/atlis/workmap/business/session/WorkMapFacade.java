@@ -17,7 +17,7 @@ import org.jlab.atlis.workmap.persistence.entity.WorkMap;
  * @author ryans
  */
 @Stateless
-@DeclareRoles({"oability", "pd"})
+@DeclareRoles("workmap-admin")
 public class WorkMapFacade extends AbstractFacade<WorkMap> {
 
     @PersistenceContext(unitName = "workmapPU")
@@ -72,13 +72,13 @@ public class WorkMapFacade extends AbstractFacade<WorkMap> {
         }
     }
 
-    @RolesAllowed({"oability", "pd"})
+    @RolesAllowed("workmap-admin")
     public void save(WorkMap map) {
         clearLists(map);
         edit(map);
     }
 
-    @RolesAllowed({"oability", "pd"})
+    @RolesAllowed("workmap-admin")
     public void copy(Date from, Date to) {
         WorkMap fromMap = findByYearMonthDayEager(from);
         WorkMap toMap = findByYearMonthDay(to);

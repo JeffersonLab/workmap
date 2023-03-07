@@ -19,7 +19,7 @@ import org.jlab.atlis.workmap.persistence.entity.WorkMapPss;
  * @author ryans
  */
 @Stateless
-@DeclareRoles({"oability", "pd"})
+@DeclareRoles("workmap-admin")
 public class WorkMapPssFacade extends AbstractFacade<WorkMapPss> {
     @PersistenceContext(unitName = "workmapPU")
     private EntityManager em;
@@ -47,7 +47,7 @@ public class WorkMapPssFacade extends AbstractFacade<WorkMapPss> {
         return map;
     }
 
-    @RolesAllowed({"oability", "pd"})
+    @RolesAllowed("workmap-admin")
     public int deleteByWorkMapId(BigDecimal workMapId) {
         Query q = em.createNamedQuery("WorkMapPss.deleteByWorkMapId");
          

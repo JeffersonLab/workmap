@@ -56,7 +56,7 @@
             <url-pattern>/sso</url-pattern>
         </web-resource-collection>
         <auth-constraint>
-            <role-name>ipausers</role-name>
+            <role-name>**</role-name>
         </auth-constraint>
         <user-data-constraint>
             <transport-guarantee>CONFIDENTIAL</transport-guarantee>
@@ -71,8 +71,7 @@
             <url-pattern>/edit-work-map/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
-            <role-name>oability</role-name>
-            <role-name>pd</role-name>
+            <role-name>workmap-admin</role-name>
         </auth-constraint>
         <user-data-constraint>
             <description/>
@@ -80,18 +79,10 @@
         </user-data-constraint>
     </security-constraint>
     <login-config>
-        <auth-method>KEYCLOAK</auth-method>
-        <realm-name>jlab</realm-name>
+        <auth-method>OIDC</auth-method>
     </login-config>
     <security-role>
-        <description>Super user who is authorized to make changes to the Work Map</description>
-        <role-name>oability</role-name>
-    </security-role>
-    <security-role>
-        <role-name>pd</role-name>
-    </security-role>
-    <security-role>
-        <role-name>ipausers</role-name>
+        <role-name>workmap-admin</role-name>
     </security-role>
     <distributable/>
 </web-app>

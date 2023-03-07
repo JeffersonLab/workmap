@@ -194,7 +194,7 @@
         </div>
         <div id="content">
             <form method="post" action="${pageContext.request.contextPath}/edit-work-map">
-                <c:if test="${pageContext.request.isUserInRole('oability') or pageContext.request.isUserInRole('pd')}">
+                <c:if test="${pageContext.request.isUserInRole('workmap-admin')}">
                     <div id="topActionPanel">
                         <c:choose>
                             <c:when test="${editable}">                              
