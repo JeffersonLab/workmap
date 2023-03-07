@@ -23,7 +23,7 @@ import javax.validation.constraints.Size;
  * @author ryans
  */
 @Entity
-@Table(name = "WORK_MAP_TASK_TYPE", schema = "ATLIS_OWNER", uniqueConstraints = {
+@Table(name = "WORK_MAP_TASK_TYPE", schema = "WORKMAP_OWNER", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"TYPE_NAME"})})
 @NamedQueries({
     @NamedQuery(name = "WorkMapTaskType.findAll", query = "SELECT w FROM WorkMapTaskType w"),

@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author ryans
  */
 @Entity
-@Table(name = "WORK_MAP_TASK", schema = "ATLIS_OWNER", uniqueConstraints = {
+@Table(name = "WORK_MAP_TASK", schema = "WORKMAP_OWNER", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"WORK_MAP_ID", "WORK_MAP_TASK_AREA_ID"})})
 @XmlRootElement
 @NamedQueries({

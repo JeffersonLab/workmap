@@ -23,7 +23,7 @@ import javax.validation.constraints.NotNull;
  * @author ryans
  */
 @Entity
-@Table(name = "WORK_MAP_PSS", schema = "ATLIS_OWNER", uniqueConstraints = {
+@Table(name = "WORK_MAP_PSS", schema = "WORKMAP_OWNER", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"WORK_MAP_ID", "WORK_MAP_PSS_AREA_ID"})})
 @NamedQueries({
     @NamedQuery(name = "WorkMapPss.findAll", query = "SELECT w FROM WorkMapPss w"),
