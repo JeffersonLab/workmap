@@ -2,9 +2,27 @@
 Accelerator task list work map
 
 ---
+- [Quick Start with Compose](https://github.com/JeffersonLab/workmap#quick-start-with-compose)
 - [Build](https://github.com/JeffersonLab/workmap#build)
 - [Release](https://github.com/JeffersonLab/workmap#release)
 ---
+
+## Quick Start with Compose
+1. Grab project
+```
+git clone https://github.com/JeffersonLab/workmap
+cd workmap
+```
+2. Launch [Compose](https://github.com/docker/compose)
+```
+docker compose up
+```
+3. Navigate to page
+```
+http://localhost:8080/workmap
+```
+
+See: [Docker Compose Strategy](https://gist.github.com/slominskir/a7da801e8259f5974c978f9c3091d52c)
 
 ## Build
 This project is built with [Java 17](https://adoptium.net/) (compiled to Java 11 bytecode), and uses the [Gradle 7](https://gradle.org/) build tool to automatically download dependencies and build the project from source:
