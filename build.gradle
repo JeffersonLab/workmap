@@ -3,10 +3,10 @@ plugins {
 }
 description = "Accelerator work map"
 group 'org.jlab'
-version = '3.8.0'
+version = '3.9.0'
 
 ext {
-    releaseDate = 'Mar 7 2023'
+    releaseDate = 'April 12 2023'
 }
 
 tasks.withType(JavaCompile) {
