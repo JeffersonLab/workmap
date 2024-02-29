@@ -11,9 +11,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Get version file
-        run: |
-          echo "FILE_VER=yellow" >> "$GITHUB_ENV"
       - name: Verify version match
         if: "$FILE_VER" != "$GITHUB_REF_NAME"
         run: |
