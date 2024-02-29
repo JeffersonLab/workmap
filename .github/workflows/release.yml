@@ -14,6 +14,7 @@ jobs:
       - name: Get version file
         run: |
           fileVer=`grep "version =" build.gradle | cut -d' ' -f3`
+          echo "{fileVer}={value}" >> "$GITHUB_ENV"
       - name: Verify version match
         if: ${{ fileVer }} != ${{ GITHUB_REF_NAME }}
         run: |
