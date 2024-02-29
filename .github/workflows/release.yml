@@ -6,17 +6,11 @@ on:
       - "v*.*.*"
 
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Verify version match
-        if: "$FILE_VER" != "$GITHUB_REF_NAME"
-        run: |
-            echo "tag label doesn't match version string in build.gradle"
-            echo "::error file={name},line={line},endLine={endLine},title={title}::{message}"
-            exit 1
       - name: Setup Build
         uses: actions/setup-java@v3
         with:
