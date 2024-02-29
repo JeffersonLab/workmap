@@ -17,7 +17,7 @@ jobs:
           echo ${fileVer}
           echo "FILE_VER=${fileVer}" >> "$GITHUB_ENV"
       - name: Verify version match
-        if: ${{ FILE_VER }} != ${{ GITHUB_REF_NAME }}
+        if: $FILE_VER != $GITHUB_REF_NAME
         run: |
             echo "tag label doesn't match version string in build.gradle"
             echo "::error file={name},line={line},endLine={endLine},title={title}::{message}"
