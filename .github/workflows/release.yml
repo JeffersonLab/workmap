@@ -21,7 +21,7 @@ jobs:
             echo "::error file={name},line={line},endLine={endLine},title={title}::{message}"
             exit 1
       - name: Setup Build
-      - uses: actions/setup-java@v3
+        uses: actions/setup-java@v3
         with:
           distribution: temurin
           java-version: 17
