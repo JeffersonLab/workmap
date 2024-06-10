@@ -37,15 +37,6 @@ public class WorkMapTaskFacade extends AbstractFacade<WorkMapTask> {
     }
 
     @PermitAll     
-    public Collection<WorkMapTask> findByDate(Date yearMonthDay) {
-        TypedQuery<WorkMapTask> q = em.createNamedQuery("WorkMapTask.findByDate", WorkMapTask.class);
-
-        q.setParameter("yearMonthDay", yearMonthDay);
-
-        return q.getResultList();
-    }
-
-    @PermitAll     
     public List<WorkMapTask> findByWorkMapIdEager(BigDecimal workMapId) {
         TypedQuery<WorkMapTask> q = em.createNamedQuery("WorkMapTask.findByWorkMapIdEager", WorkMapTask.class);
 
