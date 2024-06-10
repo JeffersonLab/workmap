@@ -68,7 +68,7 @@ public class WorkMapTaskFacade extends AbstractFacade<WorkMapTask> {
         return map;
     }
 
-    @RolesAllowed({"oability", "pd"})
+    @RolesAllowed({"workmap-admin"})
     public int deleteByWorkMapId(BigDecimal workMapId) {
         Query q = em.createNamedQuery("WorkMapTask.deleteByWorkMapId");
          
