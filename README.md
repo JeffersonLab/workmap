@@ -41,7 +41,7 @@ http://localhost:8080/workmap
 ## Install
 This application requires a Java 11+ JVM and standard library to run, plus a Java EE 8+ application server (developed with Wildfly).
 
-1. Install service [dependencies](https://github.com/JeffersonLab/workmap/blob/main/deps.yml)
+1. Install service [dependencies](https://github.com/JeffersonLab/workmap/blob/main/deps.yaml)
 2. Download [Wildfly 26.1.3](https://www.wildfly.org/downloads/)
 3. [Configure](https://github.com/JeffersonLab/workmap#configure) Wildfly and start it
 4. Download [workmap.war](https://github.com/JeffersonLab/workmap/releases) and deploy it to Wildfly
@@ -83,7 +83,7 @@ gradlew build
 ## Develop
 In order to iterate rapidly when making changes it's often useful to run the app directly on the local workstation, perhaps leveraging an IDE.  In this scenario run the service dependencies with:
 ```
-docker compose -f deps.yml up
+docker compose -f deps.yaml up
 ```
 **Note**: The local install of Wildfly should be [configured](https://github.com/JeffersonLab/workmap#configure) to proxy connections to services via localhost and therefore the environment variables should contain:
 ```
@@ -98,7 +98,7 @@ The [server](https://github.com/JeffersonLab/wildfly/blob/main/scripts/server-se
 1. Bump the release date and version number in build.gradle and commit and push to GitHub (using [Semantic Versioning](https://semver.org/)).
 2. Create a new release on the GitHub Releases page corresponding to the same version in the build.gradle.   The release should enumerate changes and link issues.   A war artifact can be attached to the release to facilitate easy install by users.
 3. [Publish to DockerHub](https://github.com/JeffersonLab/workmap/actions/workflows/docker-publish.yml) GitHub Action should run automatically.
-4. Bump and commit quick start [image version](https://github.com/JeffersonLab/workmap/blob/main/docker-compose.override.yml)
+4. Bump and commit quick start [image version](https://github.com/JeffersonLab/workmap/blob/main/compose.override.yaml)
 
 ## Deploy
 At JLab this app is found at [ace.jlab.org/workmap](https://ace.jlab.org/workmap) and internally at [acctest.acc.jlab.org/workmap](https://acctest.acc.jlab.org/workmap).  However, those servers are proxies for `wildfly6.acc.jlab.org` and `wildflytest6.acc.jlab.org` respectively.   A [deploy script](https://github.com/JeffersonLab/wildfly/blob/main/scripts/deploy.sh) is provided to automate wget and deploy.  Example:
