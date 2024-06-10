@@ -99,8 +99,11 @@ The [server](https://github.com/JeffersonLab/wildfly/blob/main/scripts/server-se
 2. The [CD](https://github.com/JeffersonLab/workmap/blob/main/.github/workflows/cd.yaml) GitHub Action should run automatically invoking:
     - The [Create release](https://github.com/JeffersonLab/java-workflows/blob/main/.github/workflows/gh-release.yml) GitHub Action to tag the source and create release notes summarizing any pull requests.   Edit the release notes to add any missing details.  A war file artifact is attached to the release.
     - The [Publish docker image](https://github.com/JeffersonLab/container-workflows/blob/main/.github/workflows/docker-publish.yaml) GitHub Action to create a new demo Docker image.
+   - The [Deploy to JLab](https://github.com/JeffersonLab/general-workflows/blob/main/.github/workflows/jlab-deploy-app.yml) GitHub Action to deploy to the JLab test environment.
 
 ## Deploy
+The deploy to JLab's acctest is handled automatically via the release workflow.
+
 At JLab this app is found at [ace.jlab.org/workmap](https://ace.jlab.org/workmap) and internally at [acctest.acc.jlab.org/workmap](https://acctest.acc.jlab.org/workmap).  However, those servers are proxies for `wildfly6.acc.jlab.org` and `wildflytest6.acc.jlab.org` respectively.   A [deploy script](https://github.com/JeffersonLab/wildfly/blob/main/scripts/deploy.sh) is provided to automate wget and deploy.  Example:
 
 ```
