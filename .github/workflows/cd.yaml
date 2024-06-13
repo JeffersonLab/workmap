@@ -7,10 +7,9 @@ on:
 
 jobs:
   release:
-    uses: jeffersonlab/java-workflows/.github/workflows/gh-release.yml@v1
+    uses: jeffersonlab/java-workflows/.github/workflows/gh-release.yaml@v2
     with:
       files: build/libs/workmap.war
-    secrets: inherit
 
   docker_publish:
     needs:
@@ -23,7 +22,7 @@ jobs:
   acctest_deploy:
     needs:
       - release
-    uses: jeffersonlab/general-workflows/.github/workflows/jlab-deploy-app.yml@v1
+    uses: jeffersonlab/general-workflows/.github/workflows/jlab-deploy-app.yaml@v2
     with:
       app: workmap
       env: acctest
