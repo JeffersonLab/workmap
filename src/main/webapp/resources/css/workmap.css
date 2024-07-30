@@ -1036,8 +1036,8 @@
     top: 235px;
 }
 .editable-inj-pss {
-    left: 230px;
-    top: 235px;
+    left: 175px;
+    top: 250px;
 }
 .editable-bsy-pss {
     left: 220px;
@@ -1046,6 +1046,36 @@
 .editable-fel-pss {
     left: 800px;
     top: 539px;
+}
+.testlab1 {
+    left: 135px;
+    top: 10px;
+    z-index: 100;
+}
+.testlab2 {
+    left: 135px;
+    top: 50px;
+    z-index: 100;
+}
+.testlab3 {
+    left: 135px;
+    top: 90px;
+    z-index: 100;
+}
+.testlab4 {
+    left: 135px;
+    top: 130px;
+    z-index: 100;
+}
+.testlab5 {
+    left: 173px;
+    top: 170px;
+    z-index: 100;
+}
+.testlab6 {
+    left: 173px;
+    top: 210px;
+    z-index: 100;
 }
 /* Map Layout */
 .area {     
