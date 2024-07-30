@@ -255,6 +255,29 @@
     background: url("../img/pss/LERF_yellow_dashed.png") no-repeat scroll 0 0 transparent;
 }
 
+.gts-pss span {
+    height: 37px;
+    width: 103px;
+}
+.gts-pss .beam-permit {
+    background: url("../img/pss/GTS_purple_line.png") no-repeat scroll 0 0 transparent;
+}
+.gts-pss .power-permit {
+    background: url("../img/pss/GTS_red_line.png") no-repeat scroll 0 0 transparent;
+}
+.gts-pss .lock-beam-permit {
+    background: url("../img/pss/GTS_purple_dashed.png") no-repeat scroll 0 0 transparent;
+}
+.gts-pss .lock-power-permit {
+    background: url("../img/pss/GTS_red_dashed.png") no-repeat scroll 0 0 transparent;
+}
+.gts-pss .controlled-access {
+    background: url("../img/pss/GTS_yellow_line.png") no-repeat scroll 0 0 transparent;
+}
+.gts-pss .lock-controlled-access {
+    background: url("../img/pss/GTS_yellow_dashed.png") no-repeat scroll 0 0 transparent;
+}
+
 /* Task Areas */
 .inj1 {
     left: 90px;
@@ -962,10 +985,41 @@
     z-index: 85;
 }
 .fel4 {
-    left: 796px;
+    left: 860px;
     top: 564px;
     z-index: 85;
 }
+.testlab1 {
+    left: 135px;
+    top: 10px;
+    z-index: 100;
+}
+.testlab2 {
+    left: 135px;
+    top: 50px;
+    z-index: 100;
+}
+.testlab3 {
+    left: 135px;
+    top: 90px;
+    z-index: 100;
+}
+.testlab4 {
+    left: 135px;
+    top: 130px;
+    z-index: 100;
+}
+.testlab5 {
+    left: 173px;
+    top: 170px;
+    z-index: 100;
+}
+.testlab6 {
+    left: 173px;
+    top: 210px;
+    z-index: 100;
+}
+
 /* PSS Areas */
 .nl-pss {
     left: 234px;
@@ -1007,6 +1061,10 @@
     left: 800px;
     top: 525px;
 }
+.gts-pss {
+    left: 810px;
+    top: 565px;
+}
 .editable-nl-pss {
     left: 610px;
     top: 235px;
@@ -1044,38 +1102,12 @@
     top: 785px;
 }
 .editable-fel-pss {
-    left: 800px;
+    left: 750px;
     top: 539px;
 }
-.testlab1 {
-    left: 135px;
-    top: 10px;
-    z-index: 100;
-}
-.testlab2 {
-    left: 135px;
-    top: 50px;
-    z-index: 100;
-}
-.testlab3 {
-    left: 135px;
-    top: 90px;
-    z-index: 100;
-}
-.testlab4 {
-    left: 135px;
-    top: 130px;
-    z-index: 100;
-}
-.testlab5 {
-    left: 173px;
-    top: 170px;
-    z-index: 100;
-}
-.testlab6 {
-    left: 173px;
-    top: 210px;
-    z-index: 100;
+.editable-gts-pss {
+    left: 750px;
+    top: 569px;
 }
 /* Map Layout */
 .area {     
