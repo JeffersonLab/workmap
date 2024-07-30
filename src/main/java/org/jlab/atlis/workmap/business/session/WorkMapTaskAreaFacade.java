@@ -6,21 +6,19 @@ import javax.persistence.PersistenceContext;
 import org.jlab.atlis.workmap.persistence.entity.WorkMapTaskArea;
 
 /**
- *
  * @author ryans
  */
 @Stateless
 public class WorkMapTaskAreaFacade extends AbstractFacade<WorkMapTaskArea> {
-    @PersistenceContext(unitName = "workmapPU")
-    private EntityManager em;
+  @PersistenceContext(unitName = "workmapPU")
+  private EntityManager em;
 
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
+  @Override
+  protected EntityManager getEntityManager() {
+    return em;
+  }
 
-    public WorkMapTaskAreaFacade() {
-        super(WorkMapTaskArea.class);
-    }
-    
+  public WorkMapTaskAreaFacade() {
+    super(WorkMapTaskArea.class);
+  }
 }

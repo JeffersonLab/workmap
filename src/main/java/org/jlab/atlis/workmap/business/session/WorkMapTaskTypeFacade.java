@@ -11,39 +11,38 @@ import javax.persistence.TypedQuery;
 import org.jlab.atlis.workmap.persistence.entity.WorkMapTaskType;
 
 /**
- *
  * @author ryans
  */
 @Stateless
 public class WorkMapTaskTypeFacade extends AbstractFacade<WorkMapTaskType> {
-    @PersistenceContext(unitName = "workmapPU")
-    private EntityManager em;
+  @PersistenceContext(unitName = "workmapPU")
+  private EntityManager em;
 
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
+  @Override
+  protected EntityManager getEntityManager() {
+    return em;
+  }
+
+  public WorkMapTaskTypeFacade() {
+    super(WorkMapTaskType.class);
+  }
+
+  @PermitAll
+  public Map<String, WorkMapTaskType> createMap(List<WorkMapTaskType> types) {
+    Map<String, WorkMapTaskType> map = new HashMap<String, WorkMapTaskType>();
+
+    for (WorkMapTaskType type : types) {
+      map.put(type.getTypeName(), type);
     }
 
-    public WorkMapTaskTypeFacade() {
-        super(WorkMapTaskType.class);
-    }
+    return map;
+  }
 
-    @PermitAll     
-    public Map<String, WorkMapTaskType> createMap(List<WorkMapTaskType> types) {
-        Map<String, WorkMapTaskType> map = new HashMap<String, WorkMapTaskType>();
-        
-        for(WorkMapTaskType type: types) {
-            map.put(type.getTypeName(), type);
-        }
-        
-        return map;
-    }
+  @PermitAll
+  public List<WorkMapTaskType> findAllOrdered() {
+    TypedQuery<WorkMapTaskType> q =
+        em.createNamedQuery("WorkMapTaskType.findAllOrdered", WorkMapTaskType.class);
 
-    @PermitAll     
-    public List<WorkMapTaskType> findAllOrdered() {
-        TypedQuery<WorkMapTaskType> q = em.createNamedQuery("WorkMapTaskType.findAllOrdered", WorkMapTaskType.class);
-
-        return q.getResultList();        
-    }
-    
+    return q.getResultList();
+  }
 }

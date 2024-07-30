@@ -8,44 +8,41 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-
 import org.jlab.atlis.workmap.persistence.entity.WorkMapPssState;
-import org.jlab.atlis.workmap.persistence.entity.WorkMapTaskType;
 
 /**
- *
  * @author ryans
  */
 @Stateless
 public class WorkMapPssStateFacade extends AbstractFacade<WorkMapPssState> {
-    @PersistenceContext(unitName = "workmapPU")
-    private EntityManager em;
+  @PersistenceContext(unitName = "workmapPU")
+  private EntityManager em;
 
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
+  @Override
+  protected EntityManager getEntityManager() {
+    return em;
+  }
+
+  public WorkMapPssStateFacade() {
+    super(WorkMapPssState.class);
+  }
+
+  @PermitAll
+  public Map<String, WorkMapPssState> createMap(List<WorkMapPssState> pssStates) {
+    Map<String, WorkMapPssState> map = new HashMap<String, WorkMapPssState>();
+
+    for (WorkMapPssState state : pssStates) {
+      map.put(state.getStateName(), state);
     }
 
-    public WorkMapPssStateFacade() {
-        super(WorkMapPssState.class);
-    }
+    return map;
+  }
 
-    @PermitAll     
-    public Map<String, WorkMapPssState> createMap(List<WorkMapPssState> pssStates) {
-        Map<String, WorkMapPssState> map = new HashMap<String, WorkMapPssState>();
-        
-        for(WorkMapPssState state: pssStates) {
-            map.put(state.getStateName(), state);
-        }
-        
-        return map;
-    }
+  @PermitAll
+  public List<WorkMapPssState> findAllOrdered() {
+    TypedQuery<WorkMapPssState> q =
+        em.createNamedQuery("WorkMapPssState.findAllOrdered", WorkMapPssState.class);
 
-    @PermitAll
-    public List<WorkMapPssState> findAllOrdered() {
-        TypedQuery<WorkMapPssState> q = em.createNamedQuery("WorkMapPssState.findAllOrdered", WorkMapPssState.class);
-
-        return q.getResultList();
-    }
-
+    return q.getResultList();
+  }
 }

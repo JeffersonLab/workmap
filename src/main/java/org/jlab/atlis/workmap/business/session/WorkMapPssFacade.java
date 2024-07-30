@@ -15,54 +15,52 @@ import javax.persistence.TypedQuery;
 import org.jlab.atlis.workmap.persistence.entity.WorkMapPss;
 
 /**
- *
  * @author ryans
  */
 @Stateless
 @DeclareRoles("workmap-admin")
 public class WorkMapPssFacade extends AbstractFacade<WorkMapPss> {
-    @PersistenceContext(unitName = "workmapPU")
-    private EntityManager em;
+  @PersistenceContext(unitName = "workmapPU")
+  private EntityManager em;
 
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
+  @Override
+  protected EntityManager getEntityManager() {
+    return em;
+  }
+
+  public WorkMapPssFacade() {
+    super(WorkMapPss.class);
+  }
+
+  @PermitAll
+  public Map<String, WorkMapPss> createMap(List<WorkMapPss> pss) {
+    Map<String, WorkMapPss> map = new HashMap<String, WorkMapPss>();
+
+    if (pss != null) {
+      for (WorkMapPss p : pss) {
+        map.put(p.getWorkMapPssAreaId().getAreaName(), p);
+      }
     }
 
-    public WorkMapPssFacade() {
-        super(WorkMapPss.class);
-    }
+    return map;
+  }
 
-    @PermitAll     
-    public Map<String, WorkMapPss> createMap(List<WorkMapPss> pss) {
-        Map<String, WorkMapPss> map = new HashMap<String, WorkMapPss>();
+  @RolesAllowed("workmap-admin")
+  public int deleteByWorkMapId(BigDecimal workMapId) {
+    Query q = em.createNamedQuery("WorkMapPss.deleteByWorkMapId");
 
+    q.setParameter("workMapId", workMapId);
 
-        if (pss != null) {
-            for (WorkMapPss p : pss) {
-                map.put(p.getWorkMapPssAreaId().getAreaName(), p);
-            }
-        }
+    return q.executeUpdate();
+  }
 
-        return map;
-    }
+  @PermitAll
+  public List<WorkMapPss> findByWorkMapIdEager(BigDecimal workMapId) {
+    TypedQuery<WorkMapPss> q =
+        em.createNamedQuery("WorkMapPss.findByWorkMapIdEager", WorkMapPss.class);
 
-    @RolesAllowed("workmap-admin")
-    public int deleteByWorkMapId(BigDecimal workMapId) {
-        Query q = em.createNamedQuery("WorkMapPss.deleteByWorkMapId");
-         
-        q.setParameter("workMapId", workMapId);
-        
-        return q.executeUpdate();
-    }
+    q.setParameter("workMapId", workMapId);
 
-    @PermitAll     
-    public List<WorkMapPss> findByWorkMapIdEager(BigDecimal workMapId) {
-        TypedQuery<WorkMapPss> q = em.createNamedQuery("WorkMapPss.findByWorkMapIdEager", WorkMapPss.class);
-
-        q.setParameter("workMapId", workMapId);
-
-        return q.getResultList();
-    }
-    
+    return q.getResultList();
+  }
 }

@@ -32,209 +32,206 @@ import org.jlab.atlis.workmap.persistence.entity.WorkMapTaskType;
 import org.jlab.atlis.workmap.presentation.exception.WorkMapException;
 
 /**
- *
  * @author ryans
  */
 @Named
 @RequestScoped
 public class WorkmapUtil {
 
-    @Inject
-    private WorkMapFacade mapFacade;
-    @Inject
-    private WorkMapTaskAreaFacade taskAreaFacade;
-    @Inject
-    private WorkMapTaskTypeFacade taskTypeFacade;
-    @Inject
-    private WorkMapPssAreaFacade pssAreaFacade;
-    @Inject
-    private WorkMapPssStateFacade pssStateFacade;
-    @Inject
-    private WorkMapTaskFacade taskFacade;
-    @Inject
-    private WorkMapPssFacade pssFacade;
+  @Inject private WorkMapFacade mapFacade;
+  @Inject private WorkMapTaskAreaFacade taskAreaFacade;
+  @Inject private WorkMapTaskTypeFacade taskTypeFacade;
+  @Inject private WorkMapPssAreaFacade pssAreaFacade;
+  @Inject private WorkMapPssStateFacade pssStateFacade;
+  @Inject private WorkMapTaskFacade taskFacade;
+  @Inject private WorkMapPssFacade pssFacade;
 
-    public Date convertValidateYearMonthDay(HttpServletRequest request) throws WorkMapException {
-        return convertValidateYearMonthDay(request, "yearMonthDay");
+  public Date convertValidateYearMonthDay(HttpServletRequest request) throws WorkMapException {
+    return convertValidateYearMonthDay(request, "yearMonthDay");
+  }
+
+  public Date convertValidateYearMonthDay(HttpServletRequest request, String name)
+      throws WorkMapException {
+    String yearMonthDayParam = request.getParameter(name);
+
+    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+    format.setLenient(false);
+
+    Date yearMonthDay = null;
+
+    if (yearMonthDayParam == null || yearMonthDayParam.isEmpty()) {
+      // Default is current day month and year (with zero hour/minute/sec)
+      yearMonthDay = TimeHelper.getCurrentYearMonthDay();
+    } else {
+      try {
+        yearMonthDay = format.parse(yearMonthDayParam);
+      } catch (ParseException e) {
+        throw new WorkMapException("Day must be in the format yyyy-mm-dd");
+      }
     }
 
-    public Date convertValidateYearMonthDay(HttpServletRequest request, String name) throws WorkMapException {
-        String yearMonthDayParam = request.getParameter(name);
+    return yearMonthDay;
+  }
 
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        format.setLenient(false);
+  public List<WorkMapTask> convertAndValidateTasks(HttpServletRequest request, WorkMap map) {
 
-        Date yearMonthDay = null;
+    List<WorkMapTask> tasks = new ArrayList<WorkMapTask>();
 
-        if (yearMonthDayParam == null || yearMonthDayParam.isEmpty()) {
-            // Default is current day month and year (with zero hour/minute/sec)
-            yearMonthDay = TimeHelper.getCurrentYearMonthDay();
-        } else {
-            try {
-                yearMonthDay = format.parse(yearMonthDayParam);
-            } catch (ParseException e) {
-                throw new WorkMapException("Day must be in the format yyyy-mm-dd");
-            }
-        }
+    List<WorkMapTaskArea> taskAreas = taskAreaFacade.findAll();
+    List<WorkMapTaskType> taskTypes = taskTypeFacade.findAll();
+    Map<String, WorkMapTaskType> typeMap = taskTypeFacade.createMap(taskTypes);
 
-        return yearMonthDay;
+    for (WorkMapTaskArea area : taskAreas) {
+      String symbol = request.getParameter(area.getAreaName() + "-symbol");
+      String text = request.getParameter(area.getAreaName() + "-text");
+      String upstairs = request.getParameter(area.getAreaName() + "-upstairs");
+
+      boolean upstairsBoolean = "Y".equals(upstairs);
+
+      // System.out.println("symbol: " + symbol);
+      // System.out.println("text: " + text);
+      if ((symbol != null && !symbol.isEmpty()) || (text != null && !text.isEmpty())) {
+        WorkMapTask task = new WorkMapTask();
+        task.setWorkMapTaskAreaId(area);
+        task.setWorkMapId(map);
+        task.setWorkMapTaskTypeId(typeMap.get(symbol));
+        task.setMessage(text);
+        task.setUpstairs(upstairsBoolean);
+        tasks.add(task);
+      }
     }
 
-    public List<WorkMapTask> convertAndValidateTasks(HttpServletRequest request, WorkMap map) {
+    return tasks;
+  }
 
-        List<WorkMapTask> tasks = new ArrayList<WorkMapTask>();
+  public WorkMap convertAndValidateWorkMap(HttpServletRequest request, Date yearMonthDay) {
+    WorkMap map = null;
+    String note = request.getParameter("note");
 
-        List<WorkMapTaskArea> taskAreas = taskAreaFacade.findAll();
-        List<WorkMapTaskType> taskTypes = taskTypeFacade.findAll();
-        Map<String, WorkMapTaskType> typeMap = taskTypeFacade.createMap(taskTypes);
+    map = mapFacade.findByYearMonthDayEager(yearMonthDay);
 
-        for (WorkMapTaskArea area : taskAreas) {
-            String symbol = request.getParameter(area.getAreaName() + "-symbol");
-            String text = request.getParameter(area.getAreaName() + "-text");
-            String upstairs = request.getParameter(area.getAreaName() + "-upstairs");
-
-            boolean upstairsBoolean = "Y".equals(upstairs);
-
-            //System.out.println("symbol: " + symbol);
-            //System.out.println("text: " + text);
-            if ((symbol != null && !symbol.isEmpty()) || (text != null && !text.isEmpty())) {
-                WorkMapTask task = new WorkMapTask();
-                task.setWorkMapTaskAreaId(area);
-                task.setWorkMapId(map);
-                task.setWorkMapTaskTypeId(typeMap.get(symbol));
-                task.setMessage(text);
-                task.setUpstairs(upstairsBoolean);
-                tasks.add(task);
-            }
-        }
-
-        return tasks;
+    if (map == null) {
+      map = new WorkMap();
     }
 
-    public WorkMap convertAndValidateWorkMap(HttpServletRequest request, Date yearMonthDay) {
-        WorkMap map = null;
-        String note = request.getParameter("note");
+    map.setYearMonthDay(yearMonthDay);
+    map.setNote(note);
+    map.setLastModified(new Date());
 
-        map = mapFacade.findByYearMonthDayEager(yearMonthDay);
+    return map;
+  }
 
-        if (map == null) {
-            map = new WorkMap();
-        }
+  public List<WorkMapPss> convertAndValidatePss(HttpServletRequest request, WorkMap map) {
+    List<WorkMapPss> pss = new ArrayList<WorkMapPss>();
 
-        map.setYearMonthDay(yearMonthDay);
-        map.setNote(note);
-        map.setLastModified(new Date());
+    List<WorkMapPssArea> pssAreas = pssAreaFacade.findAll();
+    List<WorkMapPssState> pssStates = pssStateFacade.findAll();
+    Map<String, WorkMapPssState> stateMap = pssStateFacade.createMap(pssStates);
 
-        return map;
+    for (WorkMapPssArea area : pssAreas) {
+      String line = request.getParameter(area.getAreaName() + "-line");
+
+      // System.out.println("line: " + line);
+      if (line != null && !line.isEmpty()) {
+        WorkMapPss p = new WorkMapPss();
+        p.setWorkMapPssAreaId(area);
+        p.setWorkMapId(map);
+        p.setWorkMapPssStateId(stateMap.get(line));
+        pss.add(p);
+      }
     }
 
-    public List<WorkMapPss> convertAndValidatePss(HttpServletRequest request, WorkMap map) {
-        List<WorkMapPss> pss = new ArrayList<WorkMapPss>();
+    return pss;
+  }
 
-        List<WorkMapPssArea> pssAreas = pssAreaFacade.findAll();
-        List<WorkMapPssState> pssStates = pssStateFacade.findAll();
-        Map<String, WorkMapPssState> stateMap = pssStateFacade.createMap(pssStates);
+  public void doGet(
+      ServletContext context,
+      HttpServletRequest request,
+      HttpServletResponse response,
+      boolean editable)
+      throws ServletException, IOException {
 
-        for (WorkMapPssArea area : pssAreas) {
-            String line = request.getParameter(area.getAreaName() + "-line");
+    Date yearMonthDay = convertValidateYearMonthDay(request);
 
-            //System.out.println("line: " + line);
-            if (line != null && !line.isEmpty()) {
-                WorkMapPss p = new WorkMapPss();
-                p.setWorkMapPssAreaId(area);
-                p.setWorkMapId(map);
-                p.setWorkMapPssStateId(stateMap.get(line));
-                pss.add(p);
-            }
-        }
+    WorkMap map = mapFacade.findByYearMonthDayEager(yearMonthDay);
 
-        return pss;
+    if (map == null) {
+      map = new WorkMap();
+      map.setYearMonthDay(yearMonthDay);
     }
 
-    public void doGet(ServletContext context, HttpServletRequest request, HttpServletResponse response, boolean editable)
-            throws ServletException, IOException {
+    List<WorkMapTask> tasks = map.getWorkMapTaskList();
+    Map<String, WorkMapTask> taskMap = taskFacade.createMap(tasks);
+    List<WorkMapTaskArea> taskAreas = taskAreaFacade.findAll();
+    List<WorkMapTaskType> taskTypes = taskTypeFacade.findAllOrdered();
 
-        Date yearMonthDay = convertValidateYearMonthDay(request);
+    List<WorkMapPss> pss = map.getWorkMapPssList();
+    Map<String, WorkMapPss> pssMap = pssFacade.createMap(pss);
+    List<WorkMapPssArea> pssAreas = pssAreaFacade.findAll();
+    List<WorkMapPssState> pssStates = pssStateFacade.findAllOrdered();
 
-        WorkMap map = mapFacade.findByYearMonthDayEager(yearMonthDay);
+    Date previous = TimeHelper.getPreviousYearMonthDay(yearMonthDay);
+    Date next = TimeHelper.getNextYearMonthDay(yearMonthDay);
+    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+    String previousYearMonthDayURL = "view-work-map?yearMonthDay=" + format.format(previous);
+    String nextYearMonthDayURL = "view-work-map?yearMonthDay=" + format.format(next);
 
-        if (map == null) {
-            map = new WorkMap();
-            map.setYearMonthDay(yearMonthDay);
-        }
+    String absContextURL = getBaseURL(request);
 
-        List<WorkMapTask> tasks = map.getWorkMapTaskList();
-        Map<String, WorkMapTask> taskMap = taskFacade.createMap(tasks);
-        List<WorkMapTaskArea> taskAreas = taskAreaFacade.findAll();
-        List<WorkMapTaskType> taskTypes = taskTypeFacade.findAllOrdered();
+    request.setAttribute("absContextURL", absContextURL);
+    request.setAttribute("editable", editable);
+    request.setAttribute("yearMonthDay", yearMonthDay);
+    request.setAttribute("previousURL", previousYearMonthDayURL);
+    request.setAttribute("nextURL", nextYearMonthDayURL);
+    request.setAttribute("taskMap", taskMap);
+    request.setAttribute("taskAreas", taskAreas);
+    request.setAttribute("taskTypes", taskTypes);
+    request.setAttribute("pssMap", pssMap);
+    request.setAttribute("pssAreas", pssAreas);
+    request.setAttribute("pssStates", pssStates);
+    request.setAttribute("note", map.getNote());
+    request.setAttribute("lastModified", map.getLastModified());
 
-        List<WorkMapPss> pss = map.getWorkMapPssList();
-        Map<String, WorkMapPss> pssMap = pssFacade.createMap(pss);
-        List<WorkMapPssArea> pssAreas = pssAreaFacade.findAll();
-        List<WorkMapPssState> pssStates = pssStateFacade.findAllOrdered();
+    context.getRequestDispatcher("/WEB-INF/views/work-map.jsp").forward(request, response);
+  }
 
-        Date previous = TimeHelper.getPreviousYearMonthDay(yearMonthDay);
-        Date next = TimeHelper.getNextYearMonthDay(yearMonthDay);
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        String previousYearMonthDayURL = "view-work-map?yearMonthDay=" + format.format(previous);
-        String nextYearMonthDayURL = "view-work-map?yearMonthDay=" + format.format(next);
+  public String getBaseURL(HttpServletRequest request) {
+    String scheme = request.getScheme();
 
-        String absContextURL = getBaseURL(request);
+    String host = System.getenv("javaProxyHost");
 
-        request.setAttribute("absContextURL", absContextURL);
-        request.setAttribute("editable", editable);
-        request.setAttribute("yearMonthDay", yearMonthDay);
-        request.setAttribute("previousURL", previousYearMonthDayURL);
-        request.setAttribute("nextURL", nextYearMonthDayURL);
-        request.setAttribute("taskMap", taskMap);
-        request.setAttribute("taskAreas", taskAreas);
-        request.setAttribute("taskTypes", taskTypes);
-        request.setAttribute("pssMap", pssMap);
-        request.setAttribute("pssAreas", pssAreas);
-        request.setAttribute("pssStates", pssStates);
-        request.setAttribute("note", map.getNote());
-        request.setAttribute("lastModified", map.getLastModified());
-
-        context.getRequestDispatcher("/WEB-INF/views/work-map.jsp").forward(request, response);
+    if (host == null || host.isEmpty()) {
+      host = request.getServerName();
     }
 
-    public String getBaseURL(HttpServletRequest request) {
-        String scheme = request.getScheme();
+    String portWithColon = null;
 
-        String host = System.getenv("javaProxyHost");
+    if (scheme.equals("http")) {
+      String port = System.getenv("javaProxyPort");
 
-        if (host == null || host.isEmpty()) {
-            host = request.getServerName();
-        }
+      if (port == null || port.isEmpty()) {
+        port = String.valueOf(request.getServerPort());
+      }
 
-        String portWithColon = null;
+      if (port.equals("80")) {
+        portWithColon = "";
+      } else {
+        portWithColon = ":" + port;
+      }
+    } else { // https
+      String port = System.getenv("javaProxySecurePort");
 
-        if (scheme.equals("http")) {
-            String port = System.getenv("javaProxyPort");
+      if (port == null || port.isEmpty()) {
+        port = String.valueOf(request.getServerPort());
+      }
 
-            if (port == null || port.isEmpty()) {
-                port = String.valueOf(request.getServerPort());
-            }
-
-            if (port.equals("80")) {
-                portWithColon = "";
-            } else {
-                portWithColon = ":" + port;
-            }
-        } else { // https
-            String port = System.getenv("javaProxySecurePort");
-
-            if (port == null || port.isEmpty()) {
-                port = String.valueOf(request.getServerPort());
-            }
-
-            if (port.equals("443")) {
-                portWithColon = "";
-            } else {
-                portWithColon = ":" + port;
-            }
-        }
-
-        return scheme + "://" + host + portWithColon + request.getContextPath();
+      if (port.equals("443")) {
+        portWithColon = "";
+      } else {
+        portWithColon = ":" + port;
+      }
     }
+
+    return scheme + "://" + host + portWithColon + request.getContextPath();
+  }
 }

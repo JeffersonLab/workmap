@@ -1,5 +1,6 @@
 plugins {
-    id 'war'  
+    id 'war'
+    id "com.diffplug.spotless" version "6.25.0"
 }
 description = "Accelerator work map"
 group 'org.jlab'
@@ -32,5 +33,11 @@ war {
         filter {
             String line -> line.replaceAll("@RELEASE_DATE@", releaseDate)
         }
+    }
+}
+
+spotless {
+    java {
+        googleJavaFormat()
     }
 }
