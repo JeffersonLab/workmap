@@ -264,7 +264,7 @@
                                 </c:otherwise>
                             </c:choose>                            
                         </c:forEach>
-                        <img alt="Accelerator" width="1200" height="614" src="${pageContext.request.contextPath}/resources/v${initParam.releaseNumber}/img/accelerator.png"/>
+                        <img alt="Accelerator" width="1200" height="890" src="${pageContext.request.contextPath}/resources/v${initParam.releaseNumber}/img/accelerator.png"/>
                         <span id="note">
                             <c:choose>
                                 <c:when test="${editable}">

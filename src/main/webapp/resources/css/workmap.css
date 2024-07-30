@@ -258,72 +258,72 @@
 /* Task Areas */
 .inj1 {
     left: 90px;
-    top: 40px;
+    top: 275px;
     z-index: 100;
 }
 .inj2 {
     left: 90px;
-    top: 73px;
+    top: 308px;
     z-index: 100;
 }
 .inj3 {
     left: 210px;
-    top: 70px;
+    top: 305px;
     z-index: 100;
 }
 .inj4 {
     left: 250px;
-    top: 70px;
+    top: 305px;
     z-index: 95;
 }
 .inj5 {
     left: 290px;
-    top: 70px;
+    top: 305px;
     z-index: 95;
 }
 .inj6 {
     left: 240px;
-    top: 32px;
+    top: 267px;
     z-index: 100;
 }
 .inj7 {
     left: 10px;
-    top: 125px;
+    top: 360px;
     z-index: 100;
 }
 .inj8 {
     left: 10px;
-    top: 158px;
+    top: 393px;
     z-index: 100;
 }
 .inj9 {
     left: 10px;
-    top: 191px;
+    top: 426px;
     z-index: 100;
 }
 .bsy1 {
     left: 200px;
-    top: 420px;
+    top: 655px;
     z-index: 100;
 }
 .bsy2 {
     left: 200px;
-    top: 455px;
+    top: 690px;
     z-index: 95;    
 }
 .bsy3 {
     left: 200px;
-    top: 490px;
+    top: 725px;
     z-index: 95;    
 }
 .bsy4 {
     left: 240px;
-    top: 455px;
+    top: 690px;
     z-index: 95;
 }
 .bsy5 {
     left: 280px;
-    top: 455px;
+    top: 690px;
     z-index: 95;
 }
 .bsy6 {
@@ -333,719 +333,749 @@
 }
 .bsy7 {
     left: 160px;
-    top: 455px;
+    top: 690px;
     z-index: 100;
 }
 .bsy8 {
     left: 160px;
-    top: 510px;
+    top: 745px;
     z-index: 100;
 }
 .bsy9 {
     left: 120px;
-    top: 368px;
+    top: 603px;
     z-index: 100;
 }
 .bsy10 {
     left: 120px;
-    top: 455px;
+    top: 690px;
     z-index: 100;
 }
 .bsy11 {
     left: 120px;
-    top: 542px;
+    top: 777px;
     z-index: 100;
 }
 .bsy12 {
     left: 80px;
-    top: 455px;
+    top: 690px;
     z-index: 100;
 }
 .ha1 {
     left: 0px;
-    top: 264px;
+    top: 499px;
     z-index: 100;
 }
 .ha2 {
     left: 0px;
-    top: 370px;
+    top: 605px;
     z-index: 100;    
 }
 .ha3 {
     left: 0px;
-    top: 231px;
+    top: 466px;
     z-index: 100;    
 }
 .hb1 {
     left: 0px;
-    top: 402px;
+    top: 637px;
     z-index: 100;    
 }
 .hb2 {
     left: 0px;
-    top: 503px;
+    top: 738px;
     z-index: 100;    
 }
 .hc1 {
     left: 0px;
-    top: 535px;
+    top: 770px;
     z-index: 100;    
 }
 .hc2 {
     left: 0px;
-    top: 633px;
+    top: 868px;
     z-index: 100;    
 }
 .hc3 {
     left: 0px;
-    top: 666px;
+    top: 901px;
     z-index: 100;    
 }
 .hd1 {
     left: 1040px;
-    top: 32px;
+    top: 267px;
     z-index: 5;
 }
 .hd2 {
     left: 1070px;
-    top: 70px;
+    top: 305px;
     z-index: 5;
 }
 .hd3 {
     left: 958px;
-    top: 32px;
+    top: 267px;
     z-index: 10;
 }
 .hd4 {
     left: 1030px;
-    top: 70px;
+    top: 305px;
     z-index: 10;
 } 
 .hd5 {
     left: 1125px;
-    top: 32px;
+    top: 267px;
     z-index: 5;
 }
 .hd6 {
     left: 1110px;
-    top: 70px;
+    top: 305px;
     z-index: 5;
 }
 .nl1 {
     left: 324px;
-    top: 32px;
+    top: 267px;
     z-index: 90;
 }
 .nl2 {
     left: 360px;
-    top: 70px;
+    top: 305px;
     z-index: 90;
 }
 .nl3 {
     left: 400px;
-    top: 32px;
+    top: 267px;
     z-index: 85;
 }
 .nl4 {
     left: 400px;
-    top: 70px;
+    top: 305px;
     z-index: 85;
 }  
 .nl5 {
     left: 684px;
-    top: 32px;
+    top: 267px;
     z-index: 75;
 }
 .nl6 {
     left: 640px;
-    top: 70px;
+    top: 305px;
     z-index: 75;
 }
 .nl7 {
     left: 880px;
-    top: 32px;
+    top: 267px;
     z-index: 70;
 }
 .nl8 {
     left: 800px;
-    top: 70px;
+    top: 305px;
     z-index: 70;
 }
 .nl9 {
     left: 440px;
-    top: 70px;
+    top: 305px;
     z-index: 90;
 }
 .nl10 {
     left: 560px;
-    top: 70px;
+    top: 305px;
     z-index: 85;
 }  
 .nl11 {
     left: 680px;
-    top: 70px;
+    top: 305px;
     z-index: 80;
 }
 .nl12 {
     left: 590px;
-    top: 32px;
+    top: 267px;
     z-index: 80;
 }
 .nl13 {
     left: 600px;
-    top: 70px;
+    top: 305px;
     z-index: 80;
 }
 .nl14 {
     left: 400px;
-    top: 106px;
+    top: 341px;
     z-index: 90;
 }
 .nl15 {
     left: 590px;
-    top: 106px;
+    top: 341px;
     z-index: 80;
 }
 .nl16 {
     left: 684px;
-    top: 106px;
+    top: 341px;
     z-index: 75;
 }
 .nl17 {
     left: 494px;
-    top: 32px;
+    top: 267px;
     z-index: 80;
 }
 .nl18 {
     left: 480px;
-    top: 70px;
+    top: 305px;
     z-index: 80;
 }
 .nl19 {
     left: 520px;
-    top: 70px;
+    top: 305px;
     z-index: 85;
 }
 .nl20 {
     left: 494px;
-    top: 106px;
+    top: 341px;
     z-index: 85;
 }
 .nl21 {
     left: 780px;
-    top: 32px;
+    top: 267px;
     z-index: 70;
 }
 .nl22 {
     left: 720px;
-    top: 70px;
+    top: 305px;
     z-index: 70;
 }
 .nl23 {
     left: 760px;
-    top: 70px;
+    top: 305px;
     z-index: 70;
 }
 .nl24 {
     left: 780px;
-    top: 106px;
+    top: 341px;
     z-index: 70;
 }
 .nl25 {
     left: 840px;
-    top: 70px;
+    top: 305px;
     z-index: 70;
 }
 .nl26 {
     left: 880px;
-    top: 70px;
+    top: 305px;
     z-index: 70;
 }
 .nl27 {
     left: 920px;
-    top: 70px;
+    top: 305px;
     z-index: 70;
 }
 .nl28 {
     left: 880px;
-    top: 106px;
+    top: 341px;
     z-index: 65;
 }
 .nl29 {
     left: 960px;
-    top: 70px;
+    top: 305px;
     z-index: 70;
 }
 .nl30 {
     left: 400px;
-    top: 140px;
+    top: 375px;
     z-index: 90;
 }
 .nl31 {
     left: 494px;
-    top: 140px;
+    top: 375px;
     z-index: 85;
 }
 .nl32 {
     left: 590px;
-    top: 140px;
+    top: 375px;
     z-index: 80;
 }
 .nl33 {
     left: 684px;
-    top: 140px;
+    top: 375px;
     z-index: 75;
 }
 .nl34 {
     left: 780px;
-    top: 140px;
+    top: 375px;
     z-index: 70;
 }
 .nl35 {
     left: 880px;
-    top: 140px;
+    top: 375px;
     z-index: 65;
 }
 .sl1 {
     left: 360px;
-    top: 454px;
+    top: 689px;
     z-index: 90;
 }
 .sl2 {
     left: 560px;
-    top: 454px;
+    top: 689px;
     z-index: 85;
 }
 .sl3 {
     left: 640px;
-    top: 454px;
+    top: 689px;
     z-index: 80;
 }
 .sl4 {
     left: 324px;
-    top: 490px;
+    top: 725px;
     z-index: 90;
 }  
 .sl5 {
     left: 400px;
-    top: 454px;
+    top: 689px;
     z-index: 90;
 }
 .sl6 {
     left: 400px;
-    top: 490px;
+    top: 725px;
     z-index: 85;
 }
 .sl7 {
     left: 440px;
-    top: 454px;
+    top: 689px;
     z-index: 85;
 }
 .sl8 {
     left: 684px;
-    top: 490px;
+    top: 725px;
     z-index: 70;
 }
 .sl9 {
     left: 680px;
-    top: 454px;
+    top: 689px;
     z-index: 75;
 }
 .sl10 {
     left: 880px;
-    top: 490px;
+    top: 725px;
     z-index: 60;
 }  
 .sl11 {
     left: 800px;
-    top: 454px;
+    top: 689px;
     z-index: 70;
 }
 .sl12 {
     left: 958px;
-    top: 490px;
+    top: 725px;
     z-index: 55;
 }  
 .sl13 {
     left: 840px;
-    top: 454px;
+    top: 689px;
     z-index: 65;
 }
 .sl14 {
     left: 600px;
-    top: 454px;
+    top: 689px;
     z-index: 80;
 }
 .sl15 {
     left: 590px;
-    top: 490px;
+    top: 725px;
     z-index: 75;
 }
 .sl16 {
     left: 400px;
-    top: 416px;
+    top: 651px;
     z-index: 90;
 }
 .sl17 {
     left: 590px;
-    top: 416px;
+    top: 651px;
     z-index: 80;
 }
 .sl18 {
     left: 684px;
-    top: 416px;
+    top: 651px;
     z-index: 75;
 }
 .sl19 {
     left: 494px;
-    top: 416px;
+    top: 651px;
     z-index: 85;
 }
 .sl20 {
     left: 480px;
-    top: 454px;
+    top: 689px;
     z-index: 85;
 }
 .sl21 {
     left: 520px;
-    top: 454px;
+    top: 235px;
     z-index: 80;
 }
 .sl22 {
     left: 494px;
-    top: 490px;
+    top: 725px;
     z-index: 80;
 }
 .sl23 {
     left: 780px;
-    top: 416px;
+    top: 651px;
     z-index: 70;
 }
 .sl24 {
     left: 720px;
-    top: 454px;
+    top: 689px;
     z-index: 75;
 }
 .sl25 {
     left: 760px;
-    top: 454px;
+    top: 689px;
     z-index: 70;
 }
 .sl26 {
     left: 780px;
-    top: 490px;
+    top: 725px;
     z-index: 65;
 }
 .sl27 {
     left: 880px;
-    top: 454px;
+    top: 689px;
     z-index: 65;
 }
 .sl28 {
     left: 920px;
-    top: 454px;
+    top: 689px;
     z-index: 65;
 }
 .sl29 {
     left: 960px;
-    top: 454px;
+    top: 689px;
     z-index: 65;
 }
 .sl30 {
     left: 880px;
-    top: 416px;
+    top: 651px;
     z-index: 65;
 }
 .sl31 {
     left: 400px;
-    top: 382px;
+    top: 617px;
     z-index: 90;
 }
 .sl32 {
     left: 494px;
-    top: 382px;
+    top: 617px;
     z-index: 85;
 }
 .sl33 {
     left: 590px;
-    top: 382px;
+    top: 617px;
     z-index: 80;
 }
 .sl34 {
     left: 684px;
-    top: 382px;
+    top: 617px;
     z-index: 75;
 }
 .sl35 {
     left: 780px;
-    top: 382px;
+    top: 617px;
     z-index: 70;
 }
 .sl36 {
     left: 880px;
-    top: 382px;
+    top: 617px;
     z-index: 65;
 }
 .ea1 {
     left: 1030px;
-    top: 118px;
+    top: 353px;
     z-index: 5;
 }
 .ea2 {
     left: 1060px;
-    top: 150px;  
+    top: 385px;
     z-index: 5;
 }
 .ea3 {
     left: 1075px;
-    top: 182px;   
+    top: 417px;
     z-index: 5;
 }
 .ea4 {
     left: 1085px;
-    top: 214px;    
+    top: 449px;
     z-index: 5;
 }
 .ea5 {
     left: 1090px;
-    top: 246px;           
+    top: 481px;
     z-index: 5;
 }
 .ea6 {
     left: 1090px;
-    top: 278px;      
+    top: 513px;
     z-index: 5;
 }
 .ea7 {
     left: 1085px;
-    top: 310px;   
+    top: 545px;
     z-index: 5;
 }
 .ea8 {
     left: 1075px;
-    top: 342px;    
+    top: 577px;
     z-index: 5;
 }
 .ea9 {
     left: 1060px;
-    top: 374px;   
+    top: 609px;
     z-index: 5;
 }
 .ea10 {
     left: 1030px;
-    top: 406px; 
+    top: 641px;
     z-index: 5;
 }
 .ea11 {
     left: 995px;
-    top: 85px; 
+    top: 320px;
     z-index: 5;
 }
 .ea12 {
     left: 995px;
-    top: 439px; 
+    top: 674px;
     z-index: 5;
 }
 .wa1 {
     left: 285px;
-    top: 118px;
+    top: 353px;
     z-index: 95;
 }
 .wa2 {
     left: 250px;
-    top: 150px;  
+    top: 385px;
     z-index: 95;    
 }
 .wa3 {
     left: 230px;
-    top: 182px;
+    top: 417px;
     z-index: 95;    
 }
 .wa4 {
     left: 225px;
-    top: 214px;   
+    top: 449px;
     z-index: 95;    
 }
 .wa5 {
     left: 215px;
-    top: 246px;   
+    top: 481px;
     z-index: 95;    
 }
 .wa6 {
     left: 215px;
-    top: 278px;   
+    top: 513px;
     z-index: 95;    
 }
 .wa7 {
     left: 225px;
-    top: 310px;   
+    top: 545px;
     z-index: 95;    
 }
 .wa8 {
     left: 230px;
-    top: 342px;   
+    top: 577px;
     z-index: 95;    
 }
 .wa9 {
     left: 250px;
-    top: 374px;  
+    top: 609px;
     z-index: 95;    
 }
 .wa10 {
     left: 285px;
-    top: 406px;     
+    top: 641px;
     z-index: 95;    
 }
 .wa11 {
     left: 324px;
-    top: 85px;     
+    top: 320px;
     z-index: 95;    
 }
 .wa12 {
     left: 324px;
-    top: 439px;     
+    top: 674px;
     z-index: 95;    
 }
 .chl1 {
     left: 375px;
-    top: 214px; 
+    top: 449px;
     z-index: 90;
 }
 .chl2 {
     left: 375px;
-    top: 246px;     
+    top: 481px;
     z-index: 90;
 }
 .chl3 {
     left: 375px;
-    top: 278px; 
+    top: 513px;
     z-index: 90;
 }
 .chl4 {
     left: 375px;
-    top: 310px;     
+    top: 545px;
     z-index: 90;
 }
 .chl5 {
     left: 553px;
-    top: 214px;     
+    top: 449px;
     z-index: 88;
 }
 .chl6 {
     left: 553px;
-    top: 246px;     
+    top: 481px;
     z-index: 88;
 }
 .chl7 {
     left: 553px;
-    top: 278px;     
+    top: 513px;
     z-index: 88;
 }
 .chl8 {
     left: 553px;
-    top: 310px;     
+    top: 545px;
     z-index: 88;
 }
 .fel1 {
     left: 796px;
-    top: 187px;     
+    top: 422px;
     z-index: 85;
 }
 .fel2 {
     left: 796px;
-    top: 221px;     
+    top: 456px;
     z-index: 85;    
 }
 .fel3 {
     left: 796px;
-    top: 255px;  
+    top: 490px;
     z-index: 85;
 }
 .fel4 {
     left: 796px;
-    top: 329px;  
+    top: 564px;
     z-index: 85;
 }
 /* PSS Areas */
 .nl-pss {
     left: 234px;
-    top: 82px;
+    top: 317px;
 }
 .sl-pss {
     left: 234px;
-    top: 278px;
+    top: 513px;
 }
 .ha-pss {
     left: 22px;
-    top: 271px;
+    top: 506px;
 }
 .hb-pss {
     left: 9px;
-    top: 428px;
+    top: 663px;
 }
 .hc-pss {
     left: 11px;
-    top: 536px;
+    top: 771px;
 }
 .hd-pss {
     left: 1088px;
-    top: 58px;
+    top: 293px;
 }
 .hdt-pss {
     left: 1034px;
-    top: 82px;
+    top: 317px;
 }
 .inj-pss {
     left: 184px;
-    top: 82px;
+    top: 317px;
 }
 .bsy-pss {
     left: 95px;
-    top: 384px;
+    top: 619px;
 }
 .fel-pss {
     left: 800px;
-    top: 290px;
+    top: 525px;
 }
 .editable-nl-pss {
     left: 610px;
-    top: 0;
+    top: 235px;
 }
 .editable-sl-pss {
     left: 610px;
-    top: 550px;
+    top: 785px;
 }
 .editable-ha-pss {
     left: 0;
-    top: 320px;
+    top: 555px;
 }
 .editable-hb-pss {
     left: 0;
-    top: 462px;
+    top: 697px;
 }
 .editable-hc-pss {
     left: 0;
-    top: 590px;
+    top: 825px;
 }
 .editable-hd-pss {
     left: 1130px;
-    top: 0;
+    top: 235px;
 }
 .editable-hdt-pss {
     left: 1030px;
-    top: 0;
+    top: 235px;
 }
 .editable-inj-pss {
-    left: 230px;
-    top: 0;
+    left: 175px;
+    top: 250px;
 }
 .editable-bsy-pss {
     left: 220px;
-    top: 550px;
+    top: 785px;
 }
 .editable-fel-pss {
     left: 800px;
-    top: 304px;
+    top: 539px;
+}
+.testlab1 {
+    left: 135px;
+    top: 10px;
+    z-index: 100;
+}
+.testlab2 {
+    left: 135px;
+    top: 50px;
+    z-index: 100;
+}
+.testlab3 {
+    left: 135px;
+    top: 90px;
+    z-index: 100;
+}
+.testlab4 {
+    left: 135px;
+    top: 130px;
+    z-index: 100;
+}
+.testlab5 {
+    left: 173px;
+    top: 170px;
+    z-index: 100;
+}
+.testlab6 {
+    left: 173px;
+    top: 210px;
+    z-index: 100;
 }
 /* Map Layout */
 .area {     
@@ -1113,8 +1143,8 @@
 #workmap-container {
     margin: 0 auto;
     position: relative;
-    padding: 55px 5px 35px 5px;
-    height: 614px;
+    padding: 14px 5px 35px 5px;
+    height: 890px;
     width: 1200px;
 }
 .text-input {
@@ -1132,7 +1162,7 @@
 }
 #note {
     position: absolute;
-    top: 575px;
+    top: 25px;
     left: 442px;
     font-size: 24px;
     font-family: arial;
