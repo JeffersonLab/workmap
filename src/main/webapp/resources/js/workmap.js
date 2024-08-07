@@ -1,3 +1,30 @@
+/**
+ * Global String Enhancements
+ */
+if (typeof String.prototype.startsWith !== 'function') {
+    String.prototype.startsWith = function (str) {
+        return this.indexOf(str) === 0;
+    };
+}
+if (!String.prototype.encodeXml) {
+    String.prototype.encodeXml = function () {
+        return this.replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/'/g, '&apos;')
+            .replace(/"/g, '&quot;');
+    };
+}
+if (!String.prototype.decodeXml) {
+    String.prototype.decodeXml = function () {
+        return this.replace(/&quot;/g, '"')
+            .replace(/&apos;/g, '\'')
+            .replace(/&gt;/g, '>')
+            .replace(/&lt;/g, '<')
+            .replace(/&amp;/g, '&');
+    };
+}
+
 var jlab = jlab || {};
 
 jlab.su = function(url) {
@@ -46,7 +73,7 @@ $(document).ready(function() {
         buttonImageOnly: true,
         onSelect: function(dateText, inst) {
             /*window.location.href=$('#contextPath').val() + '/view-work-map?yearMonthDay=' + dateText;*/
-            window.location.href = $('#contextPath').val() + '/' + dateText;
+            window.location.href = String($('#contextPath').val() + '/' + dateText).encodeXml();
         },
         beforeShow: function() {
             $('#ui-datepicker-div').addClass('top-of-the-world');
