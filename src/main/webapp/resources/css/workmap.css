@@ -278,6 +278,29 @@
     background: url("../img/pss/GTS_yellow_dashed.png") no-repeat scroll 0 0 transparent;
 }
 
+.uitf-pss span {
+    height: 46px;
+    width: 56px;
+}
+.uitf-pss .beam-permit {
+    background: url("../img/pss/UITF_purple_line.png") no-repeat scroll 0 0 transparent;
+}
+.uitf-pss .power-permit {
+    background: url("../img/pss/UITF_red_line.png") no-repeat scroll 0 0 transparent;
+}
+.uitf-pss .lock-beam-permit {
+    background: url("../img/pss/UITF_purple_dashed.png") no-repeat scroll 0 0 transparent;
+}
+.uitf-pss .lock-power-permit {
+    background: url("../img/pss/UITF_red_dashed.png") no-repeat scroll 0 0 transparent;
+}
+.uitf-pss .controlled-access {
+    background: url("../img/pss/UITF_yellow_line.png") no-repeat scroll 0 0 transparent;
+}
+.uitf-pss .lock-controlled-access {
+    background: url("../img/pss/UITF_yellow_dashed.png") no-repeat scroll 0 0 transparent;
+}
+
 /* Task Areas */
 .inj1 {
     left: 90px;
@@ -1065,6 +1088,10 @@
     left: 810px;
     top: 565px;
 }
+.uitf-pss {
+    left: 60px;
+    top: 50px;
+}
 .editable-nl-pss {
     left: 610px;
     top: 235px;
@@ -1108,6 +1135,10 @@
 .editable-gts-pss {
     left: 750px;
     top: 569px;
+}
+.editable-uitf-pss {
+    left: 55px;
+    top: 105px;
 }
 /* Map Layout */
 .area {     
