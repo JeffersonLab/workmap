@@ -92,6 +92,7 @@ public class Convert extends HttpServlet {
     puppetServer =
         puppetServer
             + "?ignoreHTTPSErrors=true&format=Letter&printBackground=true&landscape=true&waitUntil=networkidle2"
+            + "&scale=0.70"
             + "&url="
             + internalServer;
 
