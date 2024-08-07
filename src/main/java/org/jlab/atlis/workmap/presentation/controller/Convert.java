@@ -127,6 +127,6 @@ public class Convert extends HttpServlet {
   }
 
   private static String removeSpecial(String str) {
-    return str.replaceAll("[^a-zA-Z ]", "");
+    return str.replaceAll("[^a-zA-Z.]", "");
   }
 }
