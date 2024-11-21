@@ -7,7 +7,7 @@
 <div id="nav">
     <ul>
         <li><a href="${fn:escapeXml(initParam.atlisURL)}">ATLis</a></li>
-        <li><a href="${fn:escapeXml(env['CALENDAR_URL'])}">SAD Calendar</a></li>
+        <li><a href="${fn:escapeXml(env['CALENDAR_URL'])}">SAM Calendar</a></li>
         <li><a id="helpOpener" href="#">Help</a></li>
     </ul>                        
 </div>

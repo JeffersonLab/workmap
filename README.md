@@ -61,9 +61,9 @@ Uses a subset of the [Smoothness Environment Variables](https://github.com/Jeffe
  
  The following application specific envs are also used:
 
-| Name                              | Description                                                                                                                                 |
-|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-| CALENDAR_URL                      | ATLis SAD Calendar URL                                                                                                                      |
+| Name                              | Description            |
+|-----------------------------------|------------------------|
+| CALENDAR_URL                      | ATLis SAM Calendar URL |
 
 ### Database
 The application requires an Oracle 18+ database with the following [schema](https://github.com/JeffersonLab/workmap/tree/main/docker/oracle/setup) installed.   The application server hosting the app must also be configured with a JNDI datasource.
