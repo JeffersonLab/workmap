@@ -3,8 +3,9 @@ plugins {
     id "com.diffplug.spotless" version "6.25.0"
 }
 description = "Accelerator work map"
-group 'org.jlab'
-version new File("${projectDir}/VERSION").text.trim()
+group = 'org.jlab'
+version = new File("${projectDir}/VERSION").text.trim()
+ext.version = project.version
 ext.releaseDate = new Date().format('MMM dd yyyy')
 
 tasks.withType(JavaCompile).configureEach {
@@ -24,18 +25,20 @@ dependencies {
             'javax.servlet:jstl:1.2',
             'org.hibernate:hibernate-core:5.3.28.Final'
 }
+tasks.named('jar') {
+    enabled = false
+}
 war {
     archiveFileName='workmap.war'
     filesMatching('WEB-INF/web.xml') {
         filter {
-            String line -> line.replaceAll("@VERSION@", project.version)
+            String line -> line.replaceAll("@VERSION@", version)
         }
         filter {
             String line -> line.replaceAll("@RELEASE_DATE@", releaseDate)
         }
     }
 }
-
 spotless {
     java {
         googleJavaFormat()
