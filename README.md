@@ -69,7 +69,7 @@ Uses a subset of the [Smoothness Environment Variables](https://github.com/Jeffe
 The application requires an Oracle 18+ database with the following [schema](https://github.com/JeffersonLab/workmap/tree/main/docker/oracle/setup) installed.   The application server hosting the app must also be configured with a JNDI datasource.
 
 ## Build
-This project is built with [Java 17](https://adoptium.net/) (compiled to Java 11 bytecode), and uses the [Gradle 7](https://gradle.org/) build tool to automatically download dependencies and build the project from source:
+This project is built with [Java 21](https://adoptium.net/) (compiled to Java 17 bytecode), and uses the [Gradle 9](https://gradle.org/) build tool to automatically download dependencies and build the project from source:
 
 ```
 git clone https://github.com/JeffersonLab/workmap
