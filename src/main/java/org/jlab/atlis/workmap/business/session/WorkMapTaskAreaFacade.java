@@ -1,8 +1,8 @@
 package org.jlab.atlis.workmap.business.session;
 
-import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import jakarta.ejb.Stateless;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.jlab.atlis.workmap.persistence.entity.WorkMapTaskArea;
 
 /**

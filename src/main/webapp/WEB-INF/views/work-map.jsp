@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@taglib prefix="c" uri="jakarta.tags.core"%>
+<%@taglib prefix="f" uri="jakarta.tags.fmt"%>
+<%@taglib prefix="fn" uri="jakarta.tags.functions"%>
 <f:formatDate value="${yearMonthDay}" pattern="EE MMMM d yyyy" var="yearMonthDayVerboseStr"/>
 <f:formatDate value="${yearMonthDay}" pattern="yyyy-MM-dd" var="yearMonthDayConciseStr"/>
 <f:formatDate value="${lastModified}" pattern="yyyy-MM-dd HH:mm" var="lastModifiedStr"/>

@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@taglib prefix="fn" uri="jakarta.tags.functions"%>
 <div id="map-dialogs">
     <div id="copyDialog" class="dialog" title="Click on a day to copy">
         <form id="copyForm" action="${pageContext.request.contextPath}/copy-work-map" method="post">
