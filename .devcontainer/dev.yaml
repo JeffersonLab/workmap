@@ -1,0 +1,24 @@
+name: workmap-devcontainers
+services:
+  oracle:
+    extends:
+      file: ../compose.yaml
+      service: oracle
+    container_name: workmap-oracle-devc
+
+  keycloak:
+    extends:
+      file: ../compose.yaml
+      service: keycloak
+    container_name: workmap-keycloak-devc
+
+  puppet:
+    extends:
+      file: ../compose.yaml
+      service: puppet
+    container_name: workmap-puppet-devc
+
+  dev:
+    image: jeffersonlab/workmap:latest
+    hostname: dev
+    container_name: workmap-dev-devc
